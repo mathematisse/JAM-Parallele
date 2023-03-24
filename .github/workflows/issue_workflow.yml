@@ -1,0 +1,18 @@
+name: Create Branch on Issue Create
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: dev
+      - name: Create Branch
+        run: |
+          issue_title=$(jq -r ".issue.title" $GITHUB_EVENT_PATH)
+          issue_title=${issue_title// /_}
+          git checkout -b dev-$issue_title
+          git push --set-upstream origin dev-${issue_title,,}
