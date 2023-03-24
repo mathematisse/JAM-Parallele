@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="MainElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center;">
+        <ui:VisualElement name="ButtonElement" style="flex-grow: 1; background-color: rgba(33, 63, 31, 0.74); justify-content: center; width: 200px;">
+            <ui:Label tabindex="-1" text="P.E.N.I.S." display-tooltip-when-elided="true" style="font-size: 34px; -unity-text-align: middle-center;" />
+            <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" />
+            <ui:Button text="Options" display-tooltip-when-elided="true" name="OptionsButton" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
