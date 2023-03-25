@@ -4,6 +4,7 @@ public class CameraController : MonoBehaviour
 {
     public AnimationCurve rotationCurveZ;
     public AnimationCurve movementCurveY;
+    public GameObject Water;
     public float rotationSpeed = 1f;
     public float moveSpeed = 50f;
 
@@ -12,6 +13,7 @@ public class CameraController : MonoBehaviour
     
     private bool isRotating = false;
     private Vector3 originalEulerAngles;
+    private Vector3 originalEulerAnglesWater;
     private Vector3 originalPosition;
     private float elapsedTime = 0f;
     private float inversion = 1f;
@@ -21,16 +23,17 @@ public class CameraController : MonoBehaviour
         var horizontalInput = Input.GetAxisRaw("Horizontal");
 
         if (horizontalInput != 0f && !isRotating) {
-            if(transform.position.x > minx && horizontalInput < 0) {
+            if(transform.position.x > minx && horizontalInput * inversion < 0) {
                 transform.position += Vector3.right * horizontalInput * moveSpeed * Time.deltaTime * inversion;
             }
-            if(transform.position.x < maxx && horizontalInput > 0) {
+            if(transform.position.x < maxx && horizontalInput * inversion > 0) {
                 transform.position += Vector3.right * horizontalInput * moveSpeed * Time.deltaTime * inversion;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isRotating) {
             originalEulerAngles = transform.eulerAngles;
+            originalEulerAnglesWater = Water.transform.eulerAngles;
             originalPosition = transform.position;
             isRotating = true;
             elapsedTime = 0f;
@@ -44,6 +47,7 @@ public class CameraController : MonoBehaviour
         var positionY = movementCurveY.Evaluate(elapsedTime / rotationSpeed) * -5f * inversion;
         transform.eulerAngles = originalEulerAngles + new Vector3(0, 0, rotationZ);
         transform.position = originalPosition +  new Vector3(0, positionY, 0);
+        Water.transform.eulerAngles = originalEulerAnglesWater + new Vector3(rotationZ, 0, 0);
 
         if (!(elapsedTime >= rotationSpeed))
             return;
