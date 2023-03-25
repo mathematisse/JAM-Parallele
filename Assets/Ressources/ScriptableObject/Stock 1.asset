@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8e7ae086770c5429afa153b6d7f4ce, type: 3}
+  m_Name: Stock 1
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: 4c261d992eb2c2d4ca989f242f0b2c39, type: 3}
+  WoodCost: 0
+  StoneCost: 0
+  MushroomCost: 0
+  SoulCost: 0
+  BuildingType: 1
+  AttackPower: 0
+  AttackSpeed: 0
+  AttackRange: 0
+  Hp: 75
+  WoodStorage: 50
+  StoneStorage: 50
+  nextBuilding: {fileID: 11400000, guid: c283cd7b063acc04db0070af5af6db26, type: 2}
