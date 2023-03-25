@@ -26,4 +26,6 @@ public class ScriptableBuilding : ScriptableObject
 
     public int WoodStorage;
     public int StoneStorage;
+
+    public ScriptableBuilding nextBuilding;
 }

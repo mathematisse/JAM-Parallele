@@ -22,6 +22,15 @@ public class BuildingScript : MonoBehaviour
         mirroredSpriteRenderer.flipY = true;
     }
 
+    void Upgrade()
+    {
+        if (Building.nextBuilding == null) return;
+        Building = Building.nextBuilding;
+
+        GetComponent<SpriteRenderer>().sprite = Building.Sprite;
+        mirroredObject.GetComponent<SpriteRenderer>().sprite = Building.Sprite;
+    }
+
     // Update is called once per frame
     void Update()
     {

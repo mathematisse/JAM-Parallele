@@ -24,3 +24,4 @@ MonoBehaviour:
   Hp: 100
   WoodStorage: 100
   StoneStorage: 100
+  nextBuilding: {fileID: 11400000, guid: d94a8c46687c9d94c998f39064730f2a, type: 2}
