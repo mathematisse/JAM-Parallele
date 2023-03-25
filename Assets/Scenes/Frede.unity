@@ -399,6 +399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Building: {fileID: 11400000, guid: fd26e7aa4d11c124594c465646a027f1, type: 2}
+  mirroredObject: {fileID: 0}
+  yOffset: 3
 --- !u!212 &852202311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -440,12 +442,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb4eb4b62cc7d2644aa24652a5529742, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6f804c575322b640bbd63318accc71b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.04, y: 0.04}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -459,8 +461,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852202309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 1.16, z: 0.0341}
-  m_LocalScale: {x: 27.89899, y: 27.89899, z: 27.89899}
+  m_LocalPosition: {x: -7.02, y: 1.67, z: 0.0341}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
