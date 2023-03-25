@@ -12,7 +12,7 @@ public enum BuildingType
 [CreateAssetMenu(fileName = "New Building", menuName = "Building")]
 public class ScriptableBuilding : ScriptableObject
 {
-    public Sprite Sprites;
+    public Sprite Sprite;
     public int WoodCost;
     public int StoneCost;
     public int MushroomCost;

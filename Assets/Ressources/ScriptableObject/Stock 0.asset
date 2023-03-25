@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8e7ae086770c5429afa153b6d7f4ce, type: 3}
   m_Name: Stock 0
   m_EditorClassIdentifier: 
-  Sprites: {fileID: 21300000, guid: 11aaae76b1f73ca438c0c5a0bd518a4a, type: 3}
+  Sprite: {fileID: 21300000, guid: 11aaae76b1f73ca438c0c5a0bd518a4a, type: 3}
   WoodCost: 0
   StoneCost: 0
   MushroomCost: 0
@@ -20,6 +20,7 @@ MonoBehaviour:
   BuildingType: 1
   AttackPower: 0
   AttackSpeed: 0
+  AttackRange: 0
   Hp: 25
   WoodStorage: 25
   StoneStorage: 25
