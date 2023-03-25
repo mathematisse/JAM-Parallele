@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
     public float rotationSpeed = 1f;
     public float moveSpeed = 50f;
 
+    public float minx = -72;
+    public float maxx = 63;
+    
     private bool isRotating = false;
     private Vector3 originalEulerAngles;
     private Vector3 originalPosition;
@@ -18,7 +21,12 @@ public class CameraController : MonoBehaviour
         var horizontalInput = Input.GetAxisRaw("Horizontal");
 
         if (horizontalInput != 0f && !isRotating) {
-            transform.position += Vector3.right * horizontalInput * moveSpeed * Time.deltaTime * inversion;
+            if(transform.position.x > minx && horizontalInput < 0) {
+                transform.position += Vector3.right * horizontalInput * moveSpeed * Time.deltaTime * inversion;
+            }
+            if(transform.position.x < maxx && horizontalInput > 0) {
+                transform.position += Vector3.right * horizontalInput * moveSpeed * Time.deltaTime * inversion;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isRotating) {
