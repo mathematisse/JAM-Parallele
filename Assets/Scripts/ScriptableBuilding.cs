@@ -6,12 +6,13 @@ public enum BuildingType
 {
     Tower,
     Stock,
-    Casern
+    Barrack
 }
 
 [CreateAssetMenu(fileName = "New Building", menuName = "Building")]
-public class ScriptableBuilding : ScriptableObject
+public class ScriptableBuilding : ScriptableObject, ISelectable
 {
+    public SelectableType type => SelectableType.Building;
     public Sprite Sprite;
     public int WoodCost;
     public int StoneCost;

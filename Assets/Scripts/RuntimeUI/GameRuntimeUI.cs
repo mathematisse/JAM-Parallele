@@ -7,7 +7,7 @@ public class GameRuntimeUI : MonoBehaviour
 {
     [Header("Cursor Manager")]
     [SerializeField] private CursorManager _cursorManager;
-    /*
+    
     [Header("Building Objects")]
     [SerializeField] private ScriptableBuilding _tower;
     [SerializeField] private ScriptableBuilding _barrack;
@@ -135,21 +135,21 @@ public class GameRuntimeUI : MonoBehaviour
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _tower as ISelectable;
+        _cursorManager.selected = _tower;
     }
 
     private void OnBarrackButtonClicked(ClickEvent evt)
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _barrack as ISelectable;
+        _cursorManager.selected = _barrack;
     }
 
     private void OnStockButtonClicked(ClickEvent evt)
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _stock as ISelectable;
+        _cursorManager.selected = _stock;
     }
 
     private void OnPeasantButtonClicked(ClickEvent evt)
