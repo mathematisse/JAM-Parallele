@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="MainElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column; align-items: flex-start;">
+        <ui:VisualElement name="GameToolsElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; align-items: stretch;">
+            <ui:VisualElement name="ToolsElement" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.67); flex-direction: row;">
+                <ui:Button text="Build" display-tooltip-when-elided="true" name="BuildButton" style="width: 100px;" />
+                <ui:Button text="Train" display-tooltip-when-elided="true" name="TrainButton" style="width: 100px;" />
+                <ui:Button text="Harvest" display-tooltip-when-elided="true" name="HarvestButton" style="width: 100px;" />
+                <ui:Button text="Attack" display-tooltip-when-elided="true" name="AttackButton" style="width: 100px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse;">
+                <ui:VisualElement name="BuildMenu" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.63); display: flex; visibility: hidden; height: 225px; flex-direction: row; align-items: flex-start; justify-content: flex-start; overflow: visible; flex-wrap: wrap; width: initial; max-width: 433px; position: relative;">
+                    <ui:Button text="Tower" display-tooltip-when-elided="true" name="TowerButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Barrack" display-tooltip-when-elided="true" name="BarrackButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Stock" display-tooltip-when-elided="true" name="StockButton" style="width: 100px; height: 100px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="TrainMenu" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.63); display: flex; visibility: hidden; height: 225px; flex-direction: row; align-items: flex-start; justify-content: flex-start; overflow: visible; flex-wrap: wrap; width: auto; max-width: 433px; min-width: auto;">
+                    <ui:Button text="Peasant" display-tooltip-when-elided="true" name="PeasantButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Soldier" display-tooltip-when-elided="true" name="SoldierButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Bowman" display-tooltip-when-elided="true" name="BowmanButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Knight" display-tooltip-when-elided="true" name="KnightButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Thief" display-tooltip-when-elided="true" name="ThiefButton" style="width: 100px; height: 100px;" />
+                    <ui:Button text="Priest" display-tooltip-when-elided="true" name="PriestButton" style="width: 100px; height: 100px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
