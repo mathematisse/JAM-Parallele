@@ -14,6 +14,7 @@ public class HarvestEntity : Entity
     private bool Harvested = false;
     private int left;
 
+
     private void Update()
     {
         if (HarvestTarget.GetComponent<CollectScript>().IsHovered(transform.position)) {
@@ -34,13 +35,13 @@ public class HarvestEntity : Entity
             }
         }
     }
+
     public void first_Start()
     {
         if (left == 1)
         {
             WalkLeft();
         } else
-        {
             WalkRight();
         }
     }
@@ -62,17 +63,6 @@ public class HarvestEntity : Entity
         else
         {
             WalkTo(HomeTarget);
-        }
-    }
-
-    public void WalkTo(GameObject target)
-    {
-        if (transform.position.x > target.transform.position.x)
-        {
-            WalkLeft();
-        } else
-        {
-            WalkRight();
         }
     }
 }

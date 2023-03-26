@@ -6,20 +6,26 @@ public class Entity : MonoBehaviour
 {
     public enum WalkDirection { Stop, Left, Right }
 
+    public AnimationClip WalkMotion;
+
     public GameObject PrefabSprite;
     public Vector3 PrefabOffset;
 
     public bool OnUpsideDown;
     public WalkDirection Direction;
+    public WalkDirection LastDirection;
 
     public float WalkSpeed = 0.1f;
 
     private GameObject ResultPrefab;
     private bool IsSpriteLookingLeft = true;
+    protected Animator animator;
 
-    void Start()
+    protected void Start()
     {
         ReplaceSprite();
+        if (Direction == WalkDirection.Right) WalkRight();
+        if (Direction == WalkDirection.Stop) WalkStop();
     }
 
     protected void FixedUpdate()
@@ -68,6 +74,8 @@ public class Entity : MonoBehaviour
         {
             ResultPrefab = Instantiate(PrefabSprite, transform.position + PrefabOffset, transform.rotation);
             ResultPrefab.transform.parent = transform;
+            animator = ResultPrefab.GetComponent<Animator>();
+            animator.Play("idle");
         }
     }
     
@@ -79,18 +87,55 @@ public class Entity : MonoBehaviour
     public void WalkLeft()
     {
         if (!IsSpriteLookingLeft)
+        {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            IsSpriteLookingLeft = true;
+        }
+        LastDirection = WalkDirection.Right;
         Direction = WalkDirection.Left;
+        animator.Play("walk");
     }
 
     public void WalkStop()
     {
+        if (Direction == WalkDirection.Stop) return;
+        LastDirection = Direction;
         Direction = WalkDirection.Stop;
+        animator.Play("idle");
     }
     public void WalkRight()
     {
+
         if (IsSpriteLookingLeft)
+        {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            IsSpriteLookingLeft = false;
+        }
+        LastDirection = WalkDirection.Left;
         Direction = WalkDirection.Right;
+        animator.Play("walk");
+    }
+
+    public void WalkReverse()
+    {
+        if (LastDirection == WalkDirection.Left)
+        {
+            WalkLeft();
+        }
+        if (LastDirection == WalkDirection.Right)
+        {
+            WalkRight();
+        }
+    }
+    public void WalkTo(GameObject target)
+    {
+        if (transform.position.x > target.transform.position.x)
+        {
+            WalkLeft();
+        }
+        else
+        {
+            WalkRight();
+        }
     }
 }
