@@ -36,7 +36,7 @@ public class AttackableEntity : Entity
             LastAttackUpdate = DateTime.Now;
             if (FocusedEntity)
             {
-                animator.Play("attack");
+                animator.SetBool("Fighting", true);
                 WalkStop();
             }
             return;
@@ -47,6 +47,7 @@ public class AttackableEntity : Entity
         bool isAlive = FocusedEntity.ReceiveDamage(Attack);
         if (!isAlive)
         {
+            animator.SetBool("Fighting", false);
             FocusedEntity = null;
             WalkReverse();
         }
@@ -72,10 +73,11 @@ public class AttackableEntity : Entity
         if (damage > Hp)
         {
             Hp = 0;
-            animator.Play("die");
+            animator.SetBool("Die", true);
             Invoke(nameof(SelfDestruct), 3.0f);
             return false;
         }
+        animator.SetBool("Hurted", true);
         Hp -= damage;
         return true;
     }

@@ -38770,7 +38770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76690dbc36bf0d4aa4ec06e11365496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 119131215529713169, guid: 2931d516656e5b4409c709b66aec4bbc, type: 3}
+  Prefab: {fileID: 1000013261649242, guid: 7d908ba845b1044e6829ed5fb7c4be10, type: 3}
   Castle: {fileID: 45481481}
 --- !u!4 &1969946132
 Transform:
