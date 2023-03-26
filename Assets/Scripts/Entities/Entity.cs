@@ -17,7 +17,6 @@ public class Entity : MonoBehaviour
 
     protected void Start()
     {
-        Debug.Log("New Entity !");
         animator = GetComponent<Animator>();
         if (Direction == WalkDirection.Right) WalkRight();
         if (Direction == WalkDirection.Left) WalkLeft();

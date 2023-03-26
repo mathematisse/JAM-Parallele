@@ -86,4 +86,9 @@ public class AttackableEntity : Entity
     {
         Destroy(gameObject);
     }
+
+    public void FakeStart()
+    {
+        Start();
+    }
 }

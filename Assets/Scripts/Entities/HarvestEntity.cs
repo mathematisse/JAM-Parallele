@@ -12,11 +12,6 @@ public class HarvestEntity : Entity
     private bool Harvested = false;
     public bool IsTargetUpsideDown;
 
-    protected new void Start()
-    {
-        Debug.Log("New Merchant !");
-    }
-
     private void Update()
     {
         if ((transform.position.x > -1 && transform.position.x < 1)) {
