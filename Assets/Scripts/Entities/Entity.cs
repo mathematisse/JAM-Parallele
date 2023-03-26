@@ -74,6 +74,10 @@ public class Entity : MonoBehaviour
         {
             ResultPrefab = Instantiate(PrefabSprite, transform.position + PrefabOffset, transform.rotation);
             ResultPrefab.transform.parent = transform;
+            IsSpriteLookingLeft = true;
+            if (OnUpsideDown) {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y * -1, transform.localScale.z);
+            }
             animator = ResultPrefab.GetComponent<Animator>();
             animator.Play("idle");
         }
@@ -105,7 +109,6 @@ public class Entity : MonoBehaviour
     }
     public void WalkRight()
     {
-
         if (IsSpriteLookingLeft)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);

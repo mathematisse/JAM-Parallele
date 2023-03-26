@@ -7,59 +7,24 @@ public class CollectScript : MonoBehaviour
     private float collectable = -1;
     [SerializeField] private RessourceManager ressources;
     [SerializeField] private GameRuntimeUI gameRuntime;
+    [SerializeField] private HarvestManager harvest;
     public float wood = 0;
     public float stone = 0;
     public float Soul = 0;
     public float Mushroom = 0;
-    [SerializeField] private GameObject Harvest;
-    [SerializeField] private GameObject Castle;
     
     void OnMouseDown()
     {
-        Debug.Log(wood + " " + stone);
-        Debug.Log(this.gameObject.name);
         if (collectable == 1)
         {
-            if (wood == 1) {
-                Instantiate(Harvest, new Vector3(0, 3, 0), Quaternion.identity);
-                Harvest.GetComponent<HarvestEntity>().HomeTarget = Castle;
-                Harvest.GetComponent<HarvestEntity>().HarvestTarget = gameObject;
-                Harvest.GetComponent<HarvestEntity>().IsTargetUpsideDown = false;
-                Harvest.GetComponent<HarvestEntity>().first_Start();
+            if (wood == 1 || stone == 1) {
+                harvest.spawn(gameObject, false);
             }
-            if (stone == 1) {
-                Instantiate(Harvest, new Vector3(0, 3, 0), Quaternion.identity);
-                Harvest.GetComponent<HarvestEntity>().HomeTarget = Castle;
-                Harvest.GetComponent<HarvestEntity>().HarvestTarget = gameObject;
-                Harvest.GetComponent<HarvestEntity>().IsTargetUpsideDown = false;
-                Harvest.GetComponent<HarvestEntity>().first_Start();
-            }
-            if (Soul == 1) {
-                Instantiate(Harvest, new Vector3(0, 3, 0), Quaternion.identity);
-                Harvest.GetComponent<HarvestEntity>().HomeTarget = Castle;
-                Harvest.GetComponent<HarvestEntity>().HarvestTarget = gameObject;
-                Harvest.GetComponent<HarvestEntity>().IsTargetUpsideDown = true;
-                Harvest.GetComponent<HarvestEntity>().first_Start();
-            }
-            if (Mushroom == 1) {
-                Instantiate(Harvest, new Vector3(0, 3, 0), Quaternion.identity);
-                Harvest.GetComponent<HarvestEntity>().HomeTarget = Castle;
-                Harvest.GetComponent<HarvestEntity>().HarvestTarget = gameObject;
-                Harvest.GetComponent<HarvestEntity>().IsTargetUpsideDown = true;
-                Harvest.GetComponent<HarvestEntity>().first_Start();
+            if (Soul == 1 || Mushroom == 1) {
+                harvest.spawn(gameObject, true);
             }
             gameRuntime.resetHarvest();
         }
-    }
-
-    public bool IsHovered(Vector2 point)
-    {
-        var overlapPoint = Physics2D.OverlapPoint(point);
-        if (overlapPoint != null && overlapPoint.gameObject == gameObject)
-        {
-            return true;
-        }
-        return false;
     }
 
     public void switchCollectable()
@@ -82,5 +47,6 @@ public class CollectScript : MonoBehaviour
             ressources.AddSoul(5);
         if (Mushroom == 1)
             ressources.AddMushroom(5);
+        harvest.addHarvest();
     }
 }
