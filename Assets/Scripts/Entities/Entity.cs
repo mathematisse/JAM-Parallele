@@ -96,7 +96,6 @@ public class Entity : MonoBehaviour
     }
     public void WalkRight()
     {
-
         if (IsSpriteLookingLeft)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);

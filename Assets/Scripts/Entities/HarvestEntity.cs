@@ -5,15 +5,37 @@ using UnityEngine;
 public class HarvestEntity : Entity
 {
 
-    public GameObject HarvestTarget;
-    public bool IsTargetUpsideDown;
-    public GameObject HomeTarget;
-
+    [SerializeField] private GameObject HarvestTarget;
+    [SerializeField] public GameObject HomeTarget;
+    [SerializeField] private HarvestManager harvest;
     public float HarvestTime = 5f;
 
     private bool Harvested = false;
+    public bool IsTargetUpsideDown;
 
-    protected new void Start()
+    private void Update()
+    {
+        if ((transform.position.x > -1 && transform.position.x < 1)) {
+            if (Harvested)
+            {
+                HarvestTarget.GetComponent<CollectScript>().addRessources();
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!Harvested && collision.gameObject == HarvestTarget)
+        {
+            Harvested = true;
+            HideSprite();
+            WalkStop();
+            Invoke("LeaveHarvest", HarvestTime);
+        }
+    }
+
+    public void first_Start()
     {
         if (IsTargetUpsideDown)
         {
@@ -30,19 +52,6 @@ public class HarvestEntity : Entity
             WalkTo(HarvestTarget);
         }
     }
-    protected void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!Harvested && collision.gameObject == HarvestTarget)
-        {
-            Harvested = true;
-            HideSprite();
-            Invoke(nameof(LeaveHarvest), HarvestTime);
-        }
-        if (Harvested && collision.gameObject == HomeTarget)
-        {
-            HideSprite();
-        }
-    }
 
     public void LeaveHarvest()
     {
@@ -51,16 +60,32 @@ public class HarvestEntity : Entity
         {
             if (transform.position.x < 0)
             {
-                WalkLeft();
+                WalkRight();
             }
             else
             {
-                WalkRight();
+                WalkLeft();
             }
         }
         else
         {
             WalkTo(HomeTarget);
         }
+    }
+
+    public void WalkTo(GameObject target)
+    {
+        if (transform.position.x > target.transform.position.x)
+        {
+            WalkLeft();
+        } else
+        {
+            WalkRight();
+        }
+    }
+
+    public void setTarget(GameObject target)
+    {
+        HarvestTarget = target;
     }
 }
