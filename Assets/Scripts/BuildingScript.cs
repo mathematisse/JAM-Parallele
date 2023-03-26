@@ -9,6 +9,7 @@ public class BuildingScript : MonoBehaviour
     public GameObject mirroredObject;
 
     public float yOffset;
+    private float StartyOffset = 4f;
 
     private CursorManager _cursorManager;
 
@@ -41,6 +42,7 @@ public class BuildingScript : MonoBehaviour
         Building = _cursorManager.selected as ScriptableBuilding;
 
         GetComponent<SpriteRenderer>().sprite = Building.Sprite;
+        transform.position = new Vector3(transform.position.x, transform.position.y + StartyOffset, transform.position.z);
         mirroredObject = new GameObject(this.GetType().Name + " mirrored");
         mirroredObject.transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, -0.3f);
         SpriteRenderer mirroredSpriteRenderer = mirroredObject.AddComponent<SpriteRenderer>();

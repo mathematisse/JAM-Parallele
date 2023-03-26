@@ -11,6 +11,7 @@ public class AttackableEntity : Entity
     public int Attack = 1;
     public int Hp = 1;
     public AttackableEntityType Type = AttackableEntityType.Ally;
+    public bool animations = true;
 
     private AttackableEntity FocusedEntity;
     private DateTime LastAttackUpdate;
@@ -36,7 +37,7 @@ public class AttackableEntity : Entity
             LastAttackUpdate = DateTime.Now;
             if (FocusedEntity)
             {
-                animator.SetBool("Fighting", true);
+                if (animations) animator.SetBool("Fighting", true);
                 WalkStop();
             }
             return;
@@ -47,7 +48,7 @@ public class AttackableEntity : Entity
         bool isAlive = FocusedEntity.ReceiveDamage(Attack);
         if (!isAlive)
         {
-            animator.SetBool("Fighting", false);
+            if (animations) animator.SetBool("Fighting", false);
             FocusedEntity = null;
             WalkReverse();
         }
@@ -73,11 +74,11 @@ public class AttackableEntity : Entity
         if (damage > Hp)
         {
             Hp = 0;
-            animator.SetBool("Die", true);
+            if (animations) animator.SetBool("Die", true);
             Invoke(nameof(SelfDestruct), 3.0f);
             return false;
         }
-        animator.SetBool("Hurted", true);
+        if (animations) animator.SetBool("Hurted", true);
         Hp -= damage;
         return true;
     }
@@ -90,5 +91,11 @@ public class AttackableEntity : Entity
     public void FakeStart()
     {
         Start();
+    }
+
+    public bool IsDead()
+    {
+        if (Hp <= 0) return true;
+        return false;
     }
 }
