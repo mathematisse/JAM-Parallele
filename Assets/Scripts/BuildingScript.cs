@@ -42,7 +42,7 @@ public class BuildingScript : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = Building.Sprite;
         mirroredObject = new GameObject(this.GetType().Name + " mirrored");
-        mirroredObject.transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, transform.position.z);
+        mirroredObject.transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, -0.3f);
         SpriteRenderer mirroredSpriteRenderer = mirroredObject.AddComponent<SpriteRenderer>();
         mirroredSpriteRenderer.sprite = Building.Sprite;
         mirroredSpriteRenderer.flipY = true;
