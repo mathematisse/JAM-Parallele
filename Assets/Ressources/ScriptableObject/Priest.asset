@@ -19,5 +19,5 @@ MonoBehaviour:
   SoulCost: 2
   AttackPower: 3
   AttackSpeed: 0.5
-  Hp: 10
+  Hp: 5
   WalkSpeed: 0.2

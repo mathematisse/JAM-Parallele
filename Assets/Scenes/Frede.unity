@@ -5662,10 +5662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a7f0bc75407204a9b52ce0560fa5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWood: 20
-  startStone: 10
-  startMushroom: 0
-  startSoul: 0
+  startWood: 99
+  startStone: 99
+  startMushroom: 99
+  startSoul: 99
   wood: 0
   stone: 0
   mushroom: 0
@@ -12805,6 +12805,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &764833735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 764833737}
+  - component: {fileID: 764833736}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &764833736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764833735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce608812925c8664cbfcb8741fedc6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: 13205b20c0e4b454ba82d70366b5aa58, type: 2}
+  - {fileID: 11400000, guid: 85ba4a2977e06384ba683659dd9a53d2, type: 2}
+  - {fileID: 11400000, guid: 57571bd25085e89459202413cf520460, type: 2}
+  PrefabThief: {fileID: 1000012663239756, guid: 13c470c5b8dcd4854834911f7e0a9a6c, type: 3}
+--- !u!4 &764833737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764833735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8881962, y: 0.027798548, z: 6.697694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765659659
 GameObject:
   m_ObjectHideFlags: 0
@@ -36225,6 +36274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1829779425}
   - component: {fileID: 1829779426}
+  - component: {fileID: 1829779427}
   m_Layer: 0
   m_Name: Buildings
   m_TagString: Untagged
@@ -36258,6 +36308,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8d0b19e67215fa45bc7d9e49d8fb319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1829779427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829779424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ba04c1a63b01f4ebc6135d86174c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1840516856
@@ -36645,6 +36707,9 @@ MonoBehaviour:
   _tower: {fileID: 11400000, guid: 39a361368c3e4e045b592b4593723ee7, type: 2}
   _barrack: {fileID: 11400000, guid: 45526354ff4fa5449878c9275582a5a0, type: 2}
   _stock: {fileID: 11400000, guid: 94571c7e4a4fd11499d270371015d0d1, type: 2}
+  _soldier: {fileID: 11400000, guid: da851f73a3e941945b7c3f874a355220, type: 2}
+  _knight: {fileID: 11400000, guid: 58d00789aa7f89748b9b4eb8da99b14b, type: 2}
+  _priest: {fileID: 11400000, guid: d9d0218b926990747ac7c66bfbaca6a6, type: 2}
   forest: {fileID: 610199252}
   stone: {fileID: 461617850}
   soul: {fileID: 1898739065}

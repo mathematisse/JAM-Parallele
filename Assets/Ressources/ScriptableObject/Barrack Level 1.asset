@@ -17,7 +17,7 @@ MonoBehaviour:
   StoneCost: 5
   MushroomCost: 0
   SoulCost: 0
-  BuildingType: 0
+  BuildingType: 2
   AttackPower: 0
   AttackSpeed: 0
   AttackRange: 0
