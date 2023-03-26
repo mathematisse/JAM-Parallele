@@ -13,7 +13,7 @@ public class HarvestEntity : Entity
 
     private bool Harvested = false;
 
-    void Start()
+    protected new void Start()
     {
         if (IsTargetUpsideDown)
         {
@@ -30,7 +30,7 @@ public class HarvestEntity : Entity
             WalkTo(HarvestTarget);
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (!Harvested && collision.gameObject == HarvestTarget)
         {

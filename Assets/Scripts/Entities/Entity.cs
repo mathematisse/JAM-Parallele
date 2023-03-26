@@ -17,7 +17,7 @@ public class Entity : MonoBehaviour
     private GameObject ResultPrefab;
     private bool IsSpriteLookingLeft = true;
 
-    void Start()
+    protected void Start()
     {
         ReplaceSprite();
     }
