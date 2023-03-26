@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8e7ae086770c5429afa153b6d7f4ce, type: 3}
   m_Name: Barrack Level 1
   m_EditorClassIdentifier: 
-  Sprites: {fileID: 21300000, guid: e6b7af2e9119cb14cb1663aa695c9f42, type: 3}
+  Sprite: {fileID: 21300000, guid: e6b7af2e9119cb14cb1663aa695c9f42, type: 3}
   WoodCost: 10
   StoneCost: 5
   MushroomCost: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   Hp: 100
   WoodStorage: 0
   StoneStorage: 0
+  nextBuilding: {fileID: 0}
