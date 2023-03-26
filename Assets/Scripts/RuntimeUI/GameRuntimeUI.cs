@@ -22,6 +22,11 @@ public class GameRuntimeUI : MonoBehaviour
     [SerializeField] private ScriptableUnit _thief;
     [SerializeField] private ScriptableUnit _priest;
     */
+    [SerializeField] private GameObject forest;
+    [SerializeField] private GameObject stone;
+    [SerializeField] private GameObject soul;
+    [SerializeField] private GameObject mushroom;
+
     private Button _buildButton;
     private Button _trainButton;
     private Button _harvestButton;
@@ -105,6 +110,14 @@ public class GameRuntimeUI : MonoBehaviour
         
     }
 
+    public void resetHarvest()
+    {
+        forest.GetComponent<CollectScript>().resetCollectable();
+        stone.GetComponent<CollectScript>().resetCollectable();
+        soul.GetComponent<CollectScript>().resetCollectable();
+        mushroom.GetComponent<CollectScript>().resetCollectable();
+    }
+
     private void OnBuildButtonClicked(ClickEvent evt)
     {
         _buildMenu.SendToBack();
@@ -123,6 +136,10 @@ public class GameRuntimeUI : MonoBehaviour
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
+        forest.GetComponent<CollectScript>().switchCollectable();
+        stone.GetComponent<CollectScript>().switchCollectable();
+        soul.GetComponent<CollectScript>().switchCollectable();
+        mushroom.GetComponent<CollectScript>().switchCollectable();
     }
 
     private void OnAttackButtonCLicked(ClickEvent evt)
