@@ -17,9 +17,10 @@ public class Entity : MonoBehaviour
 
     protected void Start()
     {
+        Debug.Log("New Entity !");
         animator = GetComponent<Animator>();
         if (Direction == WalkDirection.Right) WalkRight();
-        if (Direction == WalkDirection.Stop) WalkStop();
+        if (Direction == WalkDirection.Left) WalkLeft();
     }
 
     protected void FixedUpdate()
@@ -66,7 +67,7 @@ public class Entity : MonoBehaviour
 
         foreach (SpriteRenderer renderer in renderers)
         {
-            renderer.enabled = false;
+            renderer.enabled = true;
         }
     }
     
