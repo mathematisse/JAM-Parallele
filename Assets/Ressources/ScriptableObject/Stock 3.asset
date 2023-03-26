@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8e7ae086770c5429afa153b6d7f4ce, type: 3}
   m_Name: Stock 3
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: ad8af754464cfe642b4bc69fb7df978a, type: 3}
+  Sprite: {fileID: 21300000, guid: d78d6721c6d9e484d920f5db4674a1e1, type: 3}
   WoodCost: 0
   StoneCost: 0
   MushroomCost: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   Hp: 1000
   WoodStorage: 200
   StoneStorage: 200
+  nextBuilding: {fileID: 0}
