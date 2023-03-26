@@ -12,10 +12,10 @@ public class HarvestManager : MonoBehaviour
 
     public void spawn(GameObject Target, bool upDown)
     {
-        if (maxHarvest == 0) return;
-        Harvest = Instantiate(Prefab, new Vector3(0, 3, -0.5f), Quaternion.identity);
+        if (maxHarvest <= 0) return;
+        Harvest = Instantiate(Prefab, new Vector3(0, 2, -0.5f), Quaternion.identity);
         Harvest.GetComponent<HarvestEntity>().HomeTarget = Castle;
-        Harvest.GetComponent<HarvestEntity>().setTarget(Target);
+        Harvest.GetComponent<HarvestEntity>().HarvestTarget = Target;
         Harvest.GetComponent<HarvestEntity>().IsTargetUpsideDown = upDown;
         Harvest.GetComponent<HarvestEntity>().first_Start();
         maxHarvest -= 1;

@@ -5,13 +5,17 @@ using UnityEngine;
 public class HarvestEntity : Entity
 {
 
-    [SerializeField] private GameObject HarvestTarget;
-    [SerializeField] public GameObject HomeTarget;
-    [SerializeField] private HarvestManager harvest;
+    public GameObject HarvestTarget;
+    public GameObject HomeTarget;
     public float HarvestTime = 5f;
 
     private bool Harvested = false;
     public bool IsTargetUpsideDown;
+
+    protected new void Start()
+    {
+        Debug.Log("New Merchant !");
+    }
 
     private void Update()
     {
@@ -37,6 +41,7 @@ public class HarvestEntity : Entity
 
     public void first_Start()
     {
+        base.Start();
         if (IsTargetUpsideDown)
         {
             if (HarvestTarget.transform.position.x < 0)
@@ -71,21 +76,5 @@ public class HarvestEntity : Entity
         {
             WalkTo(HomeTarget);
         }
-    }
-
-    public void WalkTo(GameObject target)
-    {
-        if (transform.position.x > target.transform.position.x)
-        {
-            WalkLeft();
-        } else
-        {
-            WalkRight();
-        }
-    }
-
-    public void setTarget(GameObject target)
-    {
-        HarvestTarget = target;
     }
 }
