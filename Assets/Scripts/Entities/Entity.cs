@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour
 
     public bool OnUpsideDown;
     public WalkDirection Direction;
+    public WalkDirection LastDirection;
 
     public float WalkSpeed = 0.1f;
 
@@ -20,6 +21,8 @@ public class Entity : MonoBehaviour
     protected void Start()
     {
         ReplaceSprite();
+        if (Direction == WalkDirection.Right) WalkRight();
+        if (Direction == WalkDirection.Stop) WalkStop();
     }
 
     protected void FixedUpdate()
@@ -79,18 +82,51 @@ public class Entity : MonoBehaviour
     public void WalkLeft()
     {
         if (!IsSpriteLookingLeft)
+        {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            IsSpriteLookingLeft = true;
+        }
+        LastDirection = WalkDirection.Right;
         Direction = WalkDirection.Left;
     }
 
     public void WalkStop()
     {
+        if (Direction == WalkDirection.Stop) return;
+        LastDirection = Direction;
         Direction = WalkDirection.Stop;
     }
     public void WalkRight()
     {
         if (IsSpriteLookingLeft)
+        {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            IsSpriteLookingLeft = false;
+        }
+        LastDirection = WalkDirection.Left;
         Direction = WalkDirection.Right;
+    }
+
+    public void WalkReverse()
+    {
+        if (LastDirection == WalkDirection.Left)
+        {
+            WalkLeft();
+        }
+        if (LastDirection == WalkDirection.Right)
+        {
+            WalkRight();
+        }
+    }
+    public void WalkTo(GameObject target)
+    {
+        if (transform.position.x > target.transform.position.x)
+        {
+            WalkLeft();
+        }
+        else
+        {
+            WalkRight();
+        }
     }
 }

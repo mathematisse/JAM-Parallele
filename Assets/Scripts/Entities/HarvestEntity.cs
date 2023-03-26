@@ -36,7 +36,7 @@ public class HarvestEntity : Entity
         {
             Harvested = true;
             HideSprite();
-            Invoke("LeaveHarvest", HarvestTime);
+            Invoke(nameof(LeaveHarvest), HarvestTime);
         }
         if (Harvested && collision.gameObject == HomeTarget)
         {
@@ -61,17 +61,6 @@ public class HarvestEntity : Entity
         else
         {
             WalkTo(HomeTarget);
-        }
-    }
-
-    public void WalkTo(GameObject target)
-    {
-        if (transform.position.x > target.transform.position.x)
-        {
-            WalkLeft();
-        } else
-        {
-            WalkRight();
         }
     }
 }
