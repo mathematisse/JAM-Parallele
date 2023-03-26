@@ -12,35 +12,36 @@ public class HarvestEntity : Entity
     public float HarvestTime = 5f;
 
     private bool Harvested = false;
+    private int left;
 
-    void Start()
+    private void Update()
     {
-        if (IsTargetUpsideDown)
-        {
-            if (HarvestTarget.transform.position.x < 0)
+        if (HarvestTarget.GetComponent<CollectScript>().IsHovered(transform.position)) {
+            if (!Harvested)
             {
-                WalkLeft();
-            } else
-            {
-                WalkRight();
+                Harvested = true;
+                HideSprite();
+                WalkStop();
+                Invoke("LeaveHarvest", HarvestTime);
             }
         }
-        else
-        {
-            WalkTo(HarvestTarget);
+
+        if ((transform.position.x > -1 && transform.position.x < 1)) {
+            if (Harvested)
+            {
+                HarvestTarget.GetComponent<CollectScript>().addRessources();
+                Destroy(gameObject);
+            }
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    public void first_Start()
     {
-        if (!Harvested && collision.gameObject == HarvestTarget)
+        if (left == 1)
         {
-            Harvested = true;
-            HideSprite();
-            Invoke("LeaveHarvest", HarvestTime);
-        }
-        if (Harvested && collision.gameObject == HomeTarget)
+            WalkLeft();
+        } else
         {
-            HideSprite();
+            WalkRight();
         }
     }
 
