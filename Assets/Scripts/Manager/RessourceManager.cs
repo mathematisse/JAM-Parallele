@@ -39,6 +39,13 @@ public class RessourceManager : MonoBehaviour
         return false;
     }
 
+    public bool CanAfford(ScriptableUnit unit)
+    {
+        if (wood >= unit.WoodCost && stone >= unit.StoneCost && mushroom >= unit.MushroomCost && soul >= unit.SoulCost)
+            return true;
+        return false;
+    }
+
     public void Spend(ScriptableBuilding building)
     {
         RemoveWood(building.WoodCost);

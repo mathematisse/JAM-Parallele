@@ -13,15 +13,13 @@ public class GameRuntimeUI : MonoBehaviour
     [SerializeField] private ScriptableBuilding _barrack;
     [SerializeField] private ScriptableBuilding _stock;
 
-    /*
+    
     [Header("Unit Objects")]
-    [SerializeField] private ScriptableUnit _peasant;
     [SerializeField] private ScriptableUnit _soldier;
-    [SerializeField] private ScriptableUnit _bowman;
     [SerializeField] private ScriptableUnit _knight;
-    [SerializeField] private ScriptableUnit _thief;
     [SerializeField] private ScriptableUnit _priest;
-    */
+    
+
     [SerializeField] private GameObject forest;
     [SerializeField] private GameObject stone;
     [SerializeField] private GameObject soul;
@@ -180,7 +178,7 @@ public class GameRuntimeUI : MonoBehaviour
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _soldier as ISelectable;
+        _cursorManager.selected = _soldier;
     }
 
     private void OnBowmanButtonClicked(ClickEvent evt)
@@ -194,7 +192,7 @@ public class GameRuntimeUI : MonoBehaviour
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _knight as ISelectable;
+        _cursorManager.selected = _knight;
     }
 
     private void OnThiefButtonClicked(ClickEvent evt)
@@ -208,6 +206,6 @@ public class GameRuntimeUI : MonoBehaviour
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _priest as ISelectable;
+        _cursorManager.selected = _priest;
     }
 }

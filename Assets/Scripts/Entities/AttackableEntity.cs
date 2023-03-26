@@ -34,6 +34,7 @@ public class AttackableEntity : Entity
         if (!FocusedEntity)
         {
             FocusedEntity = GetNearbyEnemy();
+            Debug.Log("from : " + gameObject.name + ", focused: " + FocusedEntity.name);
             LastAttackUpdate = DateTime.Now;
             if (FocusedEntity)
             {
@@ -86,6 +87,11 @@ public class AttackableEntity : Entity
     private void SelfDestruct()
     {
         Destroy(gameObject);
+    }
+
+    public void FakeStart()
+    {
+        Start();
     }
 
     public bool IsDead()

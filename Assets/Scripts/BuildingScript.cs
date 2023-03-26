@@ -43,6 +43,7 @@ public class BuildingScript : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = Building.Sprite;
         transform.position = new Vector3(transform.position.x, transform.position.y + StartyOffset, transform.position.z);
+        GetComponent<BoxCollider2D>().offset += new Vector2(0, -StartyOffset);
         mirroredObject = new GameObject(this.GetType().Name + " mirrored");
         mirroredObject.transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, -0.3f);
         SpriteRenderer mirroredSpriteRenderer = mirroredObject.AddComponent<SpriteRenderer>();
