@@ -9,9 +9,9 @@ public class PortalScript : MonoBehaviour
     {
         collision.gameObject.GetComponent<Entity>().PassPortal();
         if (collision.gameObject.transform.position.y > 0) {
-            collision.gameObject.transform.position -= new Vector3(0, 5f, 0);
+            collision.gameObject.transform.position -= new Vector3(0, 3f, 0);
         } else {
-            collision.gameObject.transform.position += new Vector3(0, 5f, 0);
+            collision.gameObject.transform.position += new Vector3(0, 3f, 0);
         }
     }
 }
