@@ -22,10 +22,12 @@ public class UnitManager : MonoBehaviour
     {
         if (_cursorManager.selected is not { type: SelectableType.Unit } && isTraining)
         {
+            Debug.Log("Is training false");
             isTraining = false;
         }
         else if (_cursorManager.selected is { type: SelectableType.Unit } && !isTraining)
         {
+            Debug.Log("Is training true");
             isTraining = true;
         }
 
@@ -42,13 +44,15 @@ public class UnitManager : MonoBehaviour
                 continue;
             if (building.IsHovered(_cursorManager.mousePosition))
             {
+                Debug.Log("Showing is hovored barrak");
                 ScriptableUnit unit = _cursorManager.selected as ScriptableUnit;
                 if (_ressourceManager.CanAfford(unit))
                 {
+                    Debug.Log("You can buy");
                     if (Input.GetMouseButtonDown(0))
                     {
                         GameObject troop = Instantiate(unit.Prefab);
-                        troop.transform.position = Vector3.down + building.gameObject.transform.position;
+                        troop.transform.position = new Vector3(building.gameObject.transform.position.x, 2, 0);
                         AttackableEntity entity = troop.GetComponent<AttackableEntity>();
                         entity.FakeStart();
                         entity.Attack = unit.AttackPower;

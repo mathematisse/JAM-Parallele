@@ -111,10 +111,12 @@ public class Entity : MonoBehaviour
         if (LastDirection == WalkDirection.Left)
         {
             WalkLeft();
+            return;
         }
         if (LastDirection == WalkDirection.Right)
         {
             WalkRight();
+            return;
         }
     }
     public void WalkTo(GameObject target)

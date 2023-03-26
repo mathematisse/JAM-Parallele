@@ -34,6 +34,7 @@ public class AttackableEntity : Entity
         if (!FocusedEntity)
         {
             FocusedEntity = GetNearbyEnemy();
+            Debug.Log("from : " + gameObject.name + ", focused: " + FocusedEntity.name);
             LastAttackUpdate = DateTime.Now;
             if (FocusedEntity)
             {
