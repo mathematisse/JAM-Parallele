@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:Label tabindex="-1" text="GAME OVER" display-tooltip-when-elided="true" name="GameOver" style="-unity-text-align: middle-center; position: relative; left: 0; top: 50%; bottom: 217px; right: 725px; width: 100%; height: auto; font-size: 50px; -unity-font-style: bold; color: rgb(115, 28, 28);" />
+    </ui:VisualElement>
+</ui:UXML>
