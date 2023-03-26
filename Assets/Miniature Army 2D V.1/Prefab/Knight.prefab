@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011028196368}
   - component: {fileID: 95000011895321844}
+  - component: {fileID: 7600951886904994696}
+  - component: {fileID: 1909424881832800121}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: AttackableEntity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +56,61 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &7600951886904994696
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010755293042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &1909424881832800121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010755293042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2e5280414fe5e499eed6794f24a978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnUpsideDown: 0
+  Direction: 0
+  LastDirection: 0
+  WalkSpeed: 0.1
+  AttackSpeed: 1
+  Attack: 1
+  Hp: 1
+  Type: 0
 --- !u!1 &1000011164445256
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,24 +6,18 @@ public class Entity : MonoBehaviour
 {
     public enum WalkDirection { Stop, Left, Right }
 
-    public AnimationClip WalkMotion;
-
-    public GameObject PrefabSprite;
-    public Vector3 PrefabOffset;
-
     public bool OnUpsideDown;
     public WalkDirection Direction;
     public WalkDirection LastDirection;
 
     public float WalkSpeed = 0.1f;
 
-    private GameObject ResultPrefab;
     private bool IsSpriteLookingLeft = true;
     protected Animator animator;
 
     protected void Start()
     {
-        ReplaceSprite();
+        animator = GetComponent<Animator>();
         if (Direction == WalkDirection.Right) WalkRight();
         if (Direction == WalkDirection.Stop) WalkStop();
     }
@@ -56,26 +50,23 @@ public class Entity : MonoBehaviour
         transform.position += WalkSpeed * right * Vector3.right;
     }
 
-    void ReplaceSprite()
-    {
-        GetComponent<SpriteRenderer>().enabled = false;
-        ShowSprite();
-    }
-
     public void HideSprite()
     {
-        if (ResultPrefab)
-            Destroy(ResultPrefab);
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            renderer.enabled = false;
+        }
     }
 
     public void ShowSprite()
     {
-        if (!ResultPrefab)
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer renderer in renderers)
         {
-            ResultPrefab = Instantiate(PrefabSprite, transform.position + PrefabOffset, transform.rotation);
-            ResultPrefab.transform.parent = transform;
-            animator = ResultPrefab.GetComponent<Animator>();
-            animator.Play("idle");
+            renderer.enabled = false;
         }
     }
     
@@ -93,7 +84,7 @@ public class Entity : MonoBehaviour
         }
         LastDirection = WalkDirection.Right;
         Direction = WalkDirection.Left;
-        animator.Play("walk");
+        animator.SetBool("Walking", true);
     }
 
     public void WalkStop()
@@ -101,7 +92,7 @@ public class Entity : MonoBehaviour
         if (Direction == WalkDirection.Stop) return;
         LastDirection = Direction;
         Direction = WalkDirection.Stop;
-        animator.Play("idle");
+        animator.SetBool("Walking", false);
     }
     public void WalkRight()
     {
@@ -113,7 +104,7 @@ public class Entity : MonoBehaviour
         }
         LastDirection = WalkDirection.Left;
         Direction = WalkDirection.Right;
-        animator.Play("walk");
+        animator.SetBool("Walking", true);
     }
 
     public void WalkReverse()
