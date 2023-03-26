@@ -6,6 +6,8 @@ public class Entity : MonoBehaviour
 {
     public enum WalkDirection { Stop, Left, Right }
 
+    public AnimationClip WalkMotion;
+
     public GameObject PrefabSprite;
     public Vector3 PrefabOffset;
 
@@ -17,6 +19,7 @@ public class Entity : MonoBehaviour
 
     private GameObject ResultPrefab;
     private bool IsSpriteLookingLeft = true;
+    protected Animator animator;
 
     protected void Start()
     {
@@ -71,6 +74,8 @@ public class Entity : MonoBehaviour
         {
             ResultPrefab = Instantiate(PrefabSprite, transform.position + PrefabOffset, transform.rotation);
             ResultPrefab.transform.parent = transform;
+            animator = ResultPrefab.GetComponent<Animator>();
+            animator.Play("idle");
         }
     }
     
@@ -88,6 +93,7 @@ public class Entity : MonoBehaviour
         }
         LastDirection = WalkDirection.Right;
         Direction = WalkDirection.Left;
+        animator.Play("walk");
     }
 
     public void WalkStop()
@@ -95,9 +101,11 @@ public class Entity : MonoBehaviour
         if (Direction == WalkDirection.Stop) return;
         LastDirection = Direction;
         Direction = WalkDirection.Stop;
+        animator.Play("idle");
     }
     public void WalkRight()
     {
+
         if (IsSpriteLookingLeft)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -105,6 +113,7 @@ public class Entity : MonoBehaviour
         }
         LastDirection = WalkDirection.Left;
         Direction = WalkDirection.Right;
+        animator.Play("walk");
     }
 
     public void WalkReverse()

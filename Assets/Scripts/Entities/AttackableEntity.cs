@@ -36,19 +36,17 @@ public class AttackableEntity : Entity
             LastAttackUpdate = DateTime.Now;
             if (FocusedEntity)
             {
+                animator.Play("attack");
                 WalkStop();
-                Debug.Log(gameObject.name + ": Found an enemy");
             }
             return;
         }
         TimeSpan diff = DateTime.Now - LastAttackUpdate;
         if (diff.TotalSeconds <= AttackSpeed) return;
         LastAttackUpdate = DateTime.Now;
-        Debug.Log(gameObject.name + ": Attack");
         bool isAlive = FocusedEntity.ReceiveDamage(Attack);
         if (!isAlive)
         {
-            Debug.Log(gameObject.name + ": I killed !");
             FocusedEntity = null;
             WalkReverse();
         }
@@ -71,11 +69,10 @@ public class AttackableEntity : Entity
     }
     public bool ReceiveDamage(int damage)
     {
-        Debug.Log(gameObject.name + ": Received damages");
         if (damage > Hp)
         {
             Hp = 0;
-            // Play die animation
+            animator.Play("die");
             Invoke(nameof(SelfDestruct), 3.0f);
             return false;
         }
@@ -85,7 +82,6 @@ public class AttackableEntity : Entity
 
     private void SelfDestruct()
     {
-        Debug.Log(gameObject.name + ": I'm dying !");
         Destroy(gameObject);
     }
 }
