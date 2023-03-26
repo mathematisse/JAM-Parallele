@@ -22,7 +22,7 @@ public class Entity : MonoBehaviour
         ReplaceSprite();
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         WalkUpdate();
     }
@@ -53,10 +53,24 @@ public class Entity : MonoBehaviour
     void ReplaceSprite()
     {
         GetComponent<SpriteRenderer>().enabled = false;
-        ResultPrefab = Instantiate(PrefabSprite, transform.position + PrefabOffset, transform.rotation);
-        ResultPrefab.transform.parent = transform;
+        ShowSprite();
     }
 
+    public void HideSprite()
+    {
+        if (ResultPrefab)
+            Destroy(ResultPrefab);
+    }
+
+    public void ShowSprite()
+    {
+        if (!ResultPrefab)
+        {
+            ResultPrefab = Instantiate(PrefabSprite, transform.position + PrefabOffset, transform.rotation);
+            ResultPrefab.transform.parent = transform;
+        }
+    }
+    
     public void PassPortal()
     {
         OnUpsideDown = !OnUpsideDown;
