@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Particles
+    uniqueID: 1917106911
+    locked: 0
+  - name: CameraWater
+    uniqueID: 1659615051
+    locked: 0
