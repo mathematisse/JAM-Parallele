@@ -7,6 +7,7 @@ public class CursorManager : MonoBehaviour
     public Camera tcamera;
     public ISelectable selected;
     public Vector2 mousePosition;
+    public bool isUpgrading = false;
 
     // Start is called before the first frame update
     void Start()

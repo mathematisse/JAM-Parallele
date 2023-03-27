@@ -53607,7 +53607,6 @@ GameObject:
   - component: {fileID: 5096659974919259399}
   - component: {fileID: 9198921505093932800}
   - component: {fileID: 8499949508991141090}
-  - component: {fileID: 4439992566400981656}
   - component: {fileID: 4617224481980716413}
   m_Layer: 0
   m_Name: ColliderForest
@@ -59590,7 +59589,6 @@ GameObject:
   - component: {fileID: 5274561419114001496}
   - component: {fileID: 5774330750391656159}
   - component: {fileID: 8233569326724067046}
-  - component: {fileID: 5996232413198791736}
   - component: {fileID: 8271886838539944467}
   m_Layer: 0
   m_Name: ColliderCimetiere
@@ -72193,25 +72191,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4439992566400981656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3329758129794036573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52294a27d17591a4983a344e2a4b1a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ressources: {fileID: 0}
-  gameRuntime: {fileID: 0}
-  harvest: {fileID: 0}
-  wood: 1
-  stone: 0
-  Soul: 0
-  Mushroom: 0
 --- !u!212 &4442081268184105795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73927,7 +73906,6 @@ GameObject:
   - component: {fileID: 8641302395943358864}
   - component: {fileID: 1272049180898854736}
   - component: {fileID: 5311690664913888385}
-  - component: {fileID: 7141606513527390149}
   - component: {fileID: 6097670846646156239}
   m_Layer: 0
   m_Name: Mountain
@@ -75011,7 +74989,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4770790155349627824}
   - component: {fileID: 4610761485331793683}
-  - component: {fileID: 8754806654863058503}
   - component: {fileID: 1439465127245019767}
   m_Layer: 0
   m_Name: Mushroom
@@ -87703,25 +87680,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5996232413198791736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3604388265601080977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52294a27d17591a4983a344e2a4b1a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ressources: {fileID: 0}
-  gameRuntime: {fileID: 0}
-  harvest: {fileID: 0}
-  wood: 0
-  stone: 0
-  Soul: 1
-  Mushroom: 0
 --- !u!212 &6011860453322814076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102004,25 +101962,6 @@ Transform:
   m_Father: {fileID: 260227932430789567}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7141606513527390149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891426371974938038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52294a27d17591a4983a344e2a4b1a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ressources: {fileID: 0}
-  gameRuntime: {fileID: 0}
-  harvest: {fileID: 0}
-  wood: 0
-  stone: 1
-  Soul: 0
-  Mushroom: 0
 --- !u!1 &7144208096949249803
 GameObject:
   m_ObjectHideFlags: 0
@@ -109026,25 +108965,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8754806654863058503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5130104000529015376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52294a27d17591a4983a344e2a4b1a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ressources: {fileID: 0}
-  gameRuntime: {fileID: 0}
-  harvest: {fileID: 0}
-  wood: 0
-  stone: 0
-  Soul: 0
-  Mushroom: 1
 --- !u!4 &8756542729577938208
 Transform:
   m_ObjectHideFlags: 0

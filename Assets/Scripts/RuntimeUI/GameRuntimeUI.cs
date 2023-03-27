@@ -120,6 +120,7 @@ public class GameRuntimeUI : MonoBehaviour
             resetHarvest();
             _cursorManager.selected = null;
             _fakeButton.text = "None";
+            _cursorManager.isUpgrading = false;
         }
     }
 
@@ -140,6 +141,7 @@ public class GameRuntimeUI : MonoBehaviour
         resetHarvest();
         _fakeButton.text = "None";
         _cursorManager.selected = null;
+        _cursorManager.isUpgrading = false;
     }
 
     private void OnTrainButtonClicked(ClickEvent evt)
@@ -151,7 +153,7 @@ public class GameRuntimeUI : MonoBehaviour
         resetHarvest();
         _fakeButton.text = "None";
         _cursorManager.selected = null;
-
+        _cursorManager.isUpgrading = false;
     }
 
     private void OnHarvestButtonClicked(ClickEvent evt)
@@ -165,6 +167,7 @@ public class GameRuntimeUI : MonoBehaviour
         click.Play();
         _fakeButton.text = "Harvest";
         _cursorManager.selected = null;
+        _cursorManager.isUpgrading = false;
     }
 
     private void OnUpgradeButtonCLicked(ClickEvent evt)
@@ -175,6 +178,7 @@ public class GameRuntimeUI : MonoBehaviour
         resetHarvest();
         _fakeButton.text = "Upgrade";
         _cursorManager.selected = null;
+        _cursorManager.isUpgrading = true;
     }
 
     private void OnTowerButtonClicked(ClickEvent evt)

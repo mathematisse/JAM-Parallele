@@ -29,7 +29,13 @@ public class BuildingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Built && _cursorManager != null && _cursorManager.isUpgrading && IsHovered(_cursorManager.mousePosition))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Upgrade();
+            }
+        }
     }
 
     public bool IsHovered(Vector2 point)
@@ -103,5 +109,24 @@ public class BuildingScript : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = Building.Sprite;
         mirroredObject.GetComponent<SpriteRenderer>().sprite = Building.Sprite;
+        AttackEnt.Hp = Building.Hp;
+        AttackEnt.Attack = Building.AttackPower;
+        AttackEnt.AttackSpeed = 0;
+        Mirror.Hp = Building.Hp;
+        Mirror.Attack = Building.AttackPower;
+        Mirror.AttackSpeed = 0;
+        hpBarAlly.GetComponent<HealthBar>().maxHealth = Building.Hp;
+        hpBarAlly.GetComponent<HealthBar>().currentHealth = Building.Hp;
+        hpBarEnemy.GetComponent<HealthBar>().maxHealth = Building.Hp;
+        hpBarEnemy.GetComponent<HealthBar>().currentHealth = Building.Hp;
+        if (Building.BuildingType == BuildingType.Tower)
+        {
+            var objectShooter = GetComponentInChildren<ObjectShooter>();
+            objectShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset, true);
+            var mirroredShooter = mirroredObject.transform.GetChild(0).gameObject;
+            mirroredShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, - Building.ShooterOffset, false);
+            AttackEnt.AttackSpeed = Building.AttackSpeed;
+            Mirror.AttackSpeed = Building.AttackSpeed;
+        }
     }
 }
