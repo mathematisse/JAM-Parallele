@@ -9,8 +9,8 @@ public class AttackableEntity : Entity
     public enum AttackableEntityType { Ally, Enemy };
 
     public float AttackSpeed = 1;
-    public int Attack = 1;
-    public int Hp = 1;
+    public float Attack = 1;
+    public float Hp = 1;
     public AttackableEntityType Type = AttackableEntityType.Ally;
     public bool animations = true;
 
@@ -74,7 +74,7 @@ public class AttackableEntity : Entity
         }
         return null;
     }
-    public bool ReceiveDamage(int damage)
+    public bool ReceiveDamage(float damage)
     {
         if (damage > Hp)
         {
