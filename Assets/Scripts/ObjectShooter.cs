@@ -15,6 +15,8 @@ public class ObjectShooter : MonoBehaviour
     private float _shootTimer = 0;
 
     private AttackableEntity _focused;
+
+    private List<GameObject> _objects = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,9 @@ public class ObjectShooter : MonoBehaviour
             var isAlive = _focused.ReceiveDamage((int) attackPower);
             if (!isAlive)
             {
-                _focused = null;
+                _focused = _objects.Count > 0 ? _objects[0].GetComponent<AttackableEntity>() : null;
+                if (_objects.Count > 0)
+                    _objects.RemoveAt(0);
             }
         }
     }
@@ -63,9 +67,17 @@ public class ObjectShooter : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         var ent = other.GetComponent<AttackableEntity>();
-        if (!_focused && ent && should_shoot(ent.Type))
+        if(!ent)
+            return;
+        if (!should_shoot(ent.Type))
+            return;
+        if (!_focused)
         {
             _focused = ent;
+        }
+        else if (!_objects.Contains(other.gameObject))
+        {
+            _objects.Add(other.gameObject);
         }
     }
 
@@ -83,7 +95,9 @@ public class ObjectShooter : MonoBehaviour
     {
         if (_focused == other.GetComponent<AttackableEntity>())
         {
-            _focused = null;
+            _focused = _objects.Count > 0 ? _objects[0].GetComponent<AttackableEntity>() : null;
+            if (_objects.Count > 0)
+                _objects.RemoveAt(0);
         }
     }
 }

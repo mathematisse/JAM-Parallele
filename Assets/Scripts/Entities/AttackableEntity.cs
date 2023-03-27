@@ -44,6 +44,7 @@ public class AttackableEntity : Entity
             }
             return;
         }
+        
         TimeSpan diff = DateTime.Now - LastAttackUpdate;
         if (diff.TotalSeconds <= AttackSpeed) return;
         LastAttackUpdate = DateTime.Now;
@@ -78,6 +79,7 @@ public class AttackableEntity : Entity
         if (damage > Hp)
         {
             Hp = 0;
+            hpBar.UpdateBar(Hp);
             if (animations) animator.SetBool("Die", true);
             Invoke(nameof(SelfDestruct), 3.0f);
             return false;
