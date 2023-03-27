@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObjectShooter : MonoBehaviour
 {
+    public bool isOurs;
     public float attackPower = 1;
     public float shootSpeed = 1;
     public float shootRange = 1;
@@ -28,16 +29,32 @@ public class ObjectShooter : MonoBehaviour
         {
             _shootTimer = 0;
             Debug.Log("Shot");
-            _focused.ReceiveDamage((int) attackPower);
+            var isAlive = _focused.ReceiveDamage((int) attackPower);
+            if (!isAlive)
+            {
+                _focused = null;
+            }
         }
     }
 
-    public void SetUp(float attackPower, float shootSpeed, float shootRange, float shooterOffset)
+    private bool should_shoot(AttackableEntity.AttackableEntityType type)
+    {
+        Debug.Log("Should shoot " + type + "?");
+        Debug.Log("Is " + (isOurs ? "ours" : "not ours"));
+        if (isOurs && type == AttackableEntity.AttackableEntityType.Ally)
+            return false;
+        if (!isOurs && type == AttackableEntity.AttackableEntityType.Enemy)
+            return false;
+        return true;
+    }
+
+    public void SetUp(float attackPower, float shootSpeed, float shootRange, float shooterOffset, bool isOurs)
     {
         this.attackPower = attackPower;
         this.shootSpeed = shootSpeed;
         this.shootRange = shootRange;
         this.shooterOffset = shooterOffset;
+        this.isOurs = isOurs;
 
         col.size = new Vector2(shootRange, 5);
         col.offset = new Vector2(0, -shooterOffset);
@@ -45,17 +62,20 @@ public class ObjectShooter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!_focused)
+        var ent = other.GetComponent<AttackableEntity>();
+        if (!_focused && ent && should_shoot(ent.Type))
         {
-            _focused = other.GetComponent<AttackableEntity>();
+            _focused = ent;
         }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (!_focused)
+        Debug.Log("Detects " + other.gameObject.name);
+        var ent = other.GetComponent<AttackableEntity>();
+        if (!_focused && ent && should_shoot(ent.Type))
         {
-            _focused = other.GetComponent<AttackableEntity>();
+            _focused = ent;
         }
     }
 

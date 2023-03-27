@@ -28,8 +28,9 @@ public class BuildingScript : MonoBehaviour
 
     public bool IsHovered(Vector2 point)
     {
+        var contact = GetComponent<BoxCollider2D>().bounds.Contains(point);
         var overlapPoint = Physics2D.OverlapPoint(point);
-        if (overlapPoint != null && overlapPoint.gameObject == gameObject)
+        if (contact)// && overlapPoint.gameObject == gameObject)
         {
             return true;
         }
@@ -56,7 +57,9 @@ public class BuildingScript : MonoBehaviour
         if (Building.BuildingType == BuildingType.Tower)
         {
             var objectShooter = Instantiate(this.objectShooter, transform.position, Quaternion.identity, transform);
-            objectShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset);
+            objectShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset, true);
+            var mirroredShooter = Instantiate(this.objectShooter, mirroredObject.transform.position, Quaternion.identity, mirroredObject.transform);
+            mirroredShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, - Building.ShooterOffset, false);
         }
     }
 

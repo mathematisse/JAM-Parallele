@@ -16,12 +16,12 @@ public class AttackableEntity : Entity
 
     private AttackableEntity FocusedEntity;
     private DateTime LastAttackUpdate;
-    private float Radius;
+    private Vector2 colSize;
 
     protected new void Start()
     {
         base.Start();
-        Radius = GetComponent<CircleCollider2D>().radius;
+        colSize = GetComponent<BoxCollider2D>().size;
         hpBar.SetUpBar(Hp, Hp);
     }
 
@@ -60,7 +60,7 @@ public class AttackableEntity : Entity
 
     AttackableEntity GetNearbyEnemy()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, Radius);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, colSize, 0);
 
         foreach (Collider2D collider in colliders)
         {
