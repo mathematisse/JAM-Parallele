@@ -1,8 +1,15 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CameraController : MonoBehaviour
 {
+    public AudioSource music;
+    public AudioSource switchSound;
+    public AudioSource downmusic;
     public Gradient gradient;
+    public Gradient lightGradient;
+    public GameObject global_lights;
+    public GameObject waterCamera;
     public AnimationCurve rotationCurveZ;
     public AnimationCurve movementCurveY;
     public GameObject Water;
@@ -19,13 +26,15 @@ public class CameraController : MonoBehaviour
     private float elapsedTime = 0f;
     private float inversion = 1f;
 
-    
+    private ParticlesManager _particleManager;
     private bool flipped = false;
-
+    private Vector3 waterStartingPos;
     private void Start()
     {
+        _particleManager = FindObjectOfType<ParticlesManager>();
         var waterMat = Water.GetComponentInChildren<Renderer>().material;
         waterMat.color = gradient.Evaluate(0f);
+        waterStartingPos = Water.GetComponentInChildren<Renderer>().transform.position;
     }
 
     private void Update()
@@ -37,11 +46,9 @@ public class CameraController : MonoBehaviour
             var wtransform = Water.GetComponentInChildren<Renderer>().gameObject.transform;
             if(transform.position.x > minx && horizontalInput * inversion < 0) {
                 transform.position += move;
-                wtransform.position += move;
             }
             if(transform.position.x < maxx && horizontalInput * inversion > 0) {
                 transform.position += move;
-                wtransform.position += move;
             }
         }
 
@@ -51,6 +58,18 @@ public class CameraController : MonoBehaviour
             originalPosition = transform.position;
             isRotating = true;
             elapsedTime = 0f;
+            if (inversion != 1)
+            {
+                _particleManager.switchToUp();
+                downmusic.Pause();
+            }
+            else
+            {
+                _particleManager.switchToDown();
+                music.Pause();
+
+            }
+            switchSound.Play();
         }
 
         if (!isRotating)
@@ -60,18 +79,22 @@ public class CameraController : MonoBehaviour
         if (inversion == 1)
         {
             waterMat.SetColor("_Color", gradient.Evaluate(elapsedTime / rotationSpeed));
-            waterMat.SetFloat("_Alpha",  (elapsedTime / rotationSpeed) / 2 + 0.4f);
-        }
-        else
+            //waterMat.SetFloat("_Alpha", (1 - elapsedTime / rotationSpeed) / 2 + 0.4f);
+
+            global_lights.GetComponent<Light2D>().color = lightGradient.Evaluate(elapsedTime / rotationSpeed);
+        } else
         {
             waterMat.SetColor("_Color", gradient.Evaluate(1 - elapsedTime / rotationSpeed));
-            waterMat.SetFloat("_Alpha", (1 - elapsedTime / rotationSpeed) / 2 + 0.4f);
+            //waterMat.SetFloat("_Alpha",  (elapsedTime / rotationSpeed) / 2 + 0.4f);
+
+            global_lights.GetComponent<Light2D>().color = lightGradient.Evaluate(1 - elapsedTime / rotationSpeed); 
         }
 
         elapsedTime += Time.deltaTime;
         var rotationZ = rotationCurveZ.Evaluate(elapsedTime / rotationSpeed) * 180f;
         var positionY = movementCurveY.Evaluate(elapsedTime / rotationSpeed) * -5f * inversion;
         transform.eulerAngles = originalEulerAngles + new Vector3(0, 0, rotationZ);
+        waterCamera.transform.eulerAngles = originalEulerAngles + new Vector3(0, 0, rotationZ);
         transform.position = originalPosition +  new Vector3(0, positionY, 0);
         Water.transform.eulerAngles = originalEulerAnglesWater + new Vector3(rotationZ, 0, 0);
 
@@ -87,5 +110,20 @@ public class CameraController : MonoBehaviour
         isRotating = false;
         inversion *= -1f;
         flipped = false;
+
+        if (inversion == 1)
+        {
+            Water.GetComponentInChildren<Renderer>().gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+            Water.GetComponentInChildren<Renderer>().gameObject.transform.position = waterStartingPos;
+            waterMat.SetColor("_Color", gradient.Evaluate(0f));
+            global_lights.GetComponent<Light2D>().color = lightGradient.Evaluate(0f);
+            music.Play();
+        }
+        else
+        {
+            waterMat.SetColor("_Color", gradient.Evaluate(1f));
+            global_lights.GetComponent<Light2D>().color = lightGradient.Evaluate(1f);
+            downmusic.Play();
+        }
     }
 }

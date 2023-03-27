@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Soldier
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1000011742669328, guid: 315058484cf2044ce8dcb608b4678ff6, type: 3}
-  WoodCost: 20
-  StoneCost: 40
+  WoodCost: 15
+  StoneCost: 10
   MushroomCost: 0
-  SoulCost: 2
-  AttackPower: 8
-  AttackSpeed: 2
-  Hp: 30
-  WalkSpeed: 0.06
+  SoulCost: 0
+  AttackPower: 2
+  AttackSpeed: 1
+  Hp: 10
+  WalkSpeed: 0.1

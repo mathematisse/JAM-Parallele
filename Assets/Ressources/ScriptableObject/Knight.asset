@@ -16,8 +16,8 @@ MonoBehaviour:
   WoodCost: 30
   StoneCost: 10
   MushroomCost: 0
-  SoulCost: 0
-  AttackPower: 2
+  SoulCost: 5
+  AttackPower: 10
   AttackSpeed: 1
   Hp: 10
   WalkSpeed: 0.1

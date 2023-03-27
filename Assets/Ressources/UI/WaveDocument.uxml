@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: flex-end;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 300px; align-items: stretch;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.45);">
+                    <ui:Label tabindex="-1" text="Wave Info" display-tooltip-when-elided="true" style="-unity-text-align: upper-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: flex-start; flex-direction: row-reverse; justify-content: space-between;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); flex-direction: row-reverse; align-items: flex-start; justify-content: flex-end; height: auto;">
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="TimerLabel" style="width: 40px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.5); flex-direction: row-reverse; align-items: flex-start; justify-content: flex-end; height: auto;">
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="WaveLabel" style="width: 40px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

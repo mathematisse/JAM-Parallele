@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildingScript : MonoBehaviour
 {
+    public GameObject objectShooter;
     public bool Built;
     public ScriptableBuilding Building;
     public GameObject mirroredObject;
@@ -49,7 +50,14 @@ public class BuildingScript : MonoBehaviour
         SpriteRenderer mirroredSpriteRenderer = mirroredObject.AddComponent<SpriteRenderer>();
         mirroredSpriteRenderer.sprite = Building.Sprite;
         mirroredSpriteRenderer.flipY = true;
+        mirroredSpriteRenderer.sortingLayerName = "Buildings";
         Built = true;
+
+        if (Building.BuildingType == BuildingType.Tower)
+        {
+            var objectShooter = Instantiate(this.objectShooter, transform.position, Quaternion.identity, transform);
+            objectShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset);
+        }
     }
 
     void Upgrade()

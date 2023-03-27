@@ -5,6 +5,7 @@ using System;
 
 public class AttackableEntity : Entity
 {
+    public HealthBar hpBar;
     public enum AttackableEntityType { Ally, Enemy };
 
     public float AttackSpeed = 1;
@@ -21,6 +22,7 @@ public class AttackableEntity : Entity
     {
         base.Start();
         Radius = GetComponent<CircleCollider2D>().radius;
+        hpBar.SetUpBar(Hp, Hp);
     }
 
     protected void Update()
@@ -34,7 +36,6 @@ public class AttackableEntity : Entity
         if (!FocusedEntity)
         {
             FocusedEntity = GetNearbyEnemy();
-            Debug.Log("from : " + gameObject.name + ", focused: " + FocusedEntity.name);
             LastAttackUpdate = DateTime.Now;
             if (FocusedEntity)
             {
@@ -46,6 +47,8 @@ public class AttackableEntity : Entity
         TimeSpan diff = DateTime.Now - LastAttackUpdate;
         if (diff.TotalSeconds <= AttackSpeed) return;
         LastAttackUpdate = DateTime.Now;
+        if (audioSource)
+            audioSource.Play();
         bool isAlive = FocusedEntity.ReceiveDamage(Attack);
         if (!isAlive)
         {
@@ -81,6 +84,7 @@ public class AttackableEntity : Entity
         }
         if (animations) animator.SetBool("Hurted", true);
         Hp -= damage;
+        hpBar.UpdateBar(Hp);
         return true;
     }
 

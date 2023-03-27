@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
+    public AudioSource Confirmed;
+    public AudioSource Denied;
     private BuildingScript[] _buildings;
     private CursorManager _cursorManager;
     private RessourceManager _ressourceManager;
@@ -22,12 +24,10 @@ public class UnitManager : MonoBehaviour
     {
         if (_cursorManager.selected is not { type: SelectableType.Unit } && isTraining)
         {
-            Debug.Log("Is training false");
             isTraining = false;
         }
         else if (_cursorManager.selected is { type: SelectableType.Unit } && !isTraining)
         {
-            Debug.Log("Is training true");
             isTraining = true;
         }
 
@@ -44,13 +44,13 @@ public class UnitManager : MonoBehaviour
                 continue;
             if (building.IsHovered(_cursorManager.mousePosition))
             {
-                Debug.Log("Showing is hovored barrak");
                 ScriptableUnit unit = _cursorManager.selected as ScriptableUnit;
                 if (_ressourceManager.CanAfford(unit))
                 {
-                    Debug.Log("You can buy");
                     if (Input.GetMouseButtonDown(0))
                     {
+                        _ressourceManager.Spend(unit);
+                        Confirmed.Play();
                         GameObject troop = Instantiate(unit.Prefab);
                         troop.transform.position = new Vector3(building.gameObject.transform.position.x, 2, 0);
                         AttackableEntity entity = troop.GetComponent<AttackableEntity>();
@@ -70,7 +70,10 @@ public class UnitManager : MonoBehaviour
                     }
                 } else
                 {
-                    Debug.Log("You too poor");
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Denied.Play();
+                    }
                 }
             }
         }

@@ -74,14 +74,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.51
+    - _Alpha: 0.9
     - _EnableExternalAlpha: 0
-    - _RefractionStrength: 1
+    - _RefractionStrength: 0.6
     - _WaterOffset: 1
-    - _WaterSpeed: 0.1
+    - _WaterSpeed: 0.03
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _NoiseDirection: {r: -0.03, g: 0, b: 0, a: 0}
+    - _NoiseDirection: {r: -0.001, g: 0, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

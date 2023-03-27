@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    public Camera tcamera;
     public ISelectable selected;
     public Vector2 mousePosition;
 
@@ -16,6 +17,6 @@ public class CursorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition = tcamera.ScreenToWorldPoint(Input.mousePosition);
     }
 }

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Priest
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
-  WoodCost: 0
-  StoneCost: 0
-  MushroomCost: 40
-  SoulCost: 2
-  AttackPower: 3
+  WoodCost: 5
+  StoneCost: 5
+  MushroomCost: 20
+  SoulCost: 5
+  AttackPower: 50
   AttackSpeed: 0.5
   Hp: 5
   WalkSpeed: 0.2

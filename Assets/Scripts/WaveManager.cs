@@ -3,9 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[Serializable]
+public struct WaveThief
+{
+    public int AttackPower;
+    public int AttackSpeed;
+    public int Hp;
+    public float WalkSpeed;
+}
+
+[Serializable]
+public struct Wave
+{
+    public WaveThief[] army;
+    public int until;
+}
+
 public class WaveManager : MonoBehaviour
 {
-    public ScriptableWave[] waves;
+    public WaveRuntimeUI waveUi;
+    public AudioSource waveSound;
+    [SerializeField]
+    public Wave[] waves;
 
     public GameObject PrefabThief;
 
@@ -18,6 +37,8 @@ public class WaveManager : MonoBehaviour
     {
         StartWaveTimestamp = DateTime.Now;
         LastWaveTimestamp = DateTime.Now;
+        waveUi.UpdateWave(0);
+        waveUi.UpdateTimer(waves[0].until);
     }
 
     // Update is called once per frame
@@ -36,9 +57,10 @@ public class WaveManager : MonoBehaviour
             }
         }
         SpawnWave(waves[waveIndex], each);
+        waveUi.UpdateTimer((int)(StartWaveTimestamp.AddSeconds(waves[waveIndex].until).Subtract(DateTime.Now).TotalSeconds));
     }
 
-    void SpawnWave(ScriptableWave wave, int wait)
+    void SpawnWave(Wave wave, int wait)
     {
         if (wait > 0)
         {
@@ -51,8 +73,9 @@ public class WaveManager : MonoBehaviour
         if (waveIndex != waves.Length - 1) waveIndex++;
 
         float xOffset = 5f;
-
-        foreach (ScriptableWaveThief thief in wave.army)
+        waveSound.Play();
+        waveUi.UpdateWave(waveIndex);
+        foreach (WaveThief thief in wave.army)
         {
             SpawnThief(thief, xOffset);
             xOffset += 0.5f;
@@ -60,7 +83,7 @@ public class WaveManager : MonoBehaviour
         LastWaveTimestamp = DateTime.Now;
     }
 
-    void SpawnThief(ScriptableWaveThief thief, float xOffset)
+    void SpawnThief(WaveThief thief, float xOffset)
     {
         GameObject troop = Instantiate(PrefabThief);
         troop.transform.position = new Vector3(xOffset, -1, 0);

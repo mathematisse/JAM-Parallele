@@ -9,6 +9,7 @@ public class RessourceRuntimeUI : MonoBehaviour
     private Label _stoneLabel;
     private Label _mushroomLabel;
     private Label _soulLabel;
+    private Label _merchantLabel;
 
     // Start is called before the first frame update
     private void OnEnable()
@@ -19,6 +20,7 @@ public class RessourceRuntimeUI : MonoBehaviour
         _stoneLabel = uiDocument.rootVisualElement.Q("StoneLabel") as Label;
         _mushroomLabel = uiDocument.rootVisualElement.Q("MushroomLabel") as Label;
         _soulLabel = uiDocument.rootVisualElement.Q("SoulLabel") as Label;
+        _merchantLabel = uiDocument.rootVisualElement.Q("MerchantLabel") as Label;
     }
     
     // Update is called once per frame
@@ -45,5 +47,10 @@ public class RessourceRuntimeUI : MonoBehaviour
     public void UpdateSoul(int soul)
     {
         _soulLabel.text = soul.ToString();
+    }
+
+    public void UpdateMerchant(int merchant)
+    {
+        _merchantLabel.text = merchant.ToString();
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public enum WalkDirection { Stop, Left, Right }
+    public AudioSource audioSource;
 
     public bool OnUpsideDown;
     public WalkDirection Direction;
@@ -14,7 +15,6 @@ public class Entity : MonoBehaviour
 
     private bool IsSpriteLookingLeft = true;
     protected Animator animator;
-
     protected void Start()
     {
         animator = GetComponent<Animator>();

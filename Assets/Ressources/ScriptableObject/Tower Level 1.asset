@@ -20,7 +20,8 @@ MonoBehaviour:
   BuildingType: 0
   AttackPower: 2
   AttackSpeed: 1
-  AttackRange: 0
+  AttackRange: 15
+  ShooterOffset: 4
   Hp: 50
   WoodStorage: 0
   StoneStorage: 0

@@ -55,6 +55,7 @@ public class HarvestEntity : Entity
 
     public void LeaveHarvest()
     {
+        audioSource.Play();
         ShowSprite();
         if (IsTargetUpsideDown)
         {

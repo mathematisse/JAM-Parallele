@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class GameRuntimeUI : MonoBehaviour
 {
+    public AudioSource click;
+
     [Header("Cursor Manager")]
     [SerializeField] private CursorManager _cursorManager;
     
@@ -15,6 +17,7 @@ public class GameRuntimeUI : MonoBehaviour
 
     
     [Header("Unit Objects")]
+    [SerializeField] private ScriptableUnit _peasant;
     [SerializeField] private ScriptableUnit _soldier;
     [SerializeField] private ScriptableUnit _knight;
     [SerializeField] private ScriptableUnit _priest;
@@ -38,9 +41,7 @@ public class GameRuntimeUI : MonoBehaviour
     private VisualElement _trainMenu;
     private Button _peasantButton;
     private Button _soldierButton;
-    private Button _bowmanButton;
     private Button _knightButton;
-    private Button _thiefButton;
     private Button _priestButton;
 
     // Start is called before the first frame update
@@ -61,11 +62,18 @@ public class GameRuntimeUI : MonoBehaviour
         _trainMenu = uiDocument.rootVisualElement.Q("TrainMenu") as VisualElement;
         _peasantButton = uiDocument.rootVisualElement.Q("PeasantButton") as Button;
         _soldierButton = uiDocument.rootVisualElement.Q("SoldierButton") as Button;
-        _bowmanButton = uiDocument.rootVisualElement.Q("BowmanButton") as Button;
         _knightButton = uiDocument.rootVisualElement.Q("KnightButton") as Button;
-        _thiefButton = uiDocument.rootVisualElement.Q("ThiefButton") as Button;
         _priestButton = uiDocument.rootVisualElement.Q("PriestButton") as Button;
 
+        _towerButton.text = "Tower\n\n" + _tower.WoodCost + " Wood\n" + _tower.StoneCost + " Stone\n" + _tower.MushroomCost + " Flower\n" + _tower.SoulCost + " Soul";
+        _barrackButton.text = "Barrack\n\n" + _barrack.WoodCost + " Wood\n" + _barrack.StoneCost + " Stone\n" + _barrack.MushroomCost + " Flower\n" + _barrack.SoulCost + " Soul";
+        _stockButton.text = "Stock\n\n" + _stock.WoodCost + " Wood\n" + _stock.StoneCost + " Stone\n" + _stock.MushroomCost + " Flower\n" + _stock.SoulCost + " Soul";
+
+        _peasantButton.text = "Peasant\n\n" + _peasant.WoodCost + " Wood\n" + _peasant.StoneCost + " Stone\n" + _peasant.MushroomCost + " Flower\n" + _peasant.SoulCost + " Soul";
+        _soldierButton.text = "Soldier\n\n" + _soldier.WoodCost + " Wood\n" + _soldier.StoneCost + " Stone\n" + _soldier.MushroomCost + " Flower\n" + _soldier.SoulCost + " Soul";
+        _knightButton.text = "Knight\n\n" + _knight.WoodCost + " Wood\n" + _knight.StoneCost + " Stone\n" + _knight.MushroomCost + " Flower\n" + _knight.SoulCost + " Soul";
+        _priestButton.text = "Priest\n\n" + _priest.WoodCost + " Wood\n" + _priest.StoneCost + " Stone\n" + _priest.MushroomCost + " Flower\n" + _priest.SoulCost + " Soul";
+        
         _buildButton.RegisterCallback<ClickEvent>(OnBuildButtonClicked);
         _trainButton.RegisterCallback<ClickEvent>(OnTrainButtonClicked);
         _harvestButton.RegisterCallback<ClickEvent>(OnHarvestButtonClicked);
@@ -77,9 +85,7 @@ public class GameRuntimeUI : MonoBehaviour
         
         _peasantButton.RegisterCallback<ClickEvent>(OnPeasantButtonClicked);
         _soldierButton.RegisterCallback<ClickEvent>(OnSoldierButtonClicked);
-        _bowmanButton.RegisterCallback<ClickEvent>(OnBowmanButtonClicked);
         _knightButton.RegisterCallback<ClickEvent>(OnKnightButtonClicked);
-        _thiefButton.RegisterCallback<ClickEvent>(OnThiefButtonClicked);
         _priestButton.RegisterCallback<ClickEvent>(OnPriestButtonClicked);
     }
 
@@ -96,9 +102,7 @@ public class GameRuntimeUI : MonoBehaviour
 
         _peasantButton.UnregisterCallback<ClickEvent>(OnPeasantButtonClicked);
         _soldierButton.UnregisterCallback<ClickEvent>(OnSoldierButtonClicked);
-        _bowmanButton.UnregisterCallback<ClickEvent>(OnBowmanButtonClicked);
         _knightButton.UnregisterCallback<ClickEvent>(OnKnightButtonClicked);
-        _thiefButton.UnregisterCallback<ClickEvent>(OnThiefButtonClicked);
         _priestButton.UnregisterCallback<ClickEvent>(OnPriestButtonClicked);
     }
 
@@ -121,6 +125,7 @@ public class GameRuntimeUI : MonoBehaviour
         _buildMenu.SendToBack();
         _buildMenu.visible = !_buildMenu.visible;
         _trainMenu.visible = false;
+        click.Play();
     }
 
     private void OnTrainButtonClicked(ClickEvent evt)
@@ -128,6 +133,7 @@ public class GameRuntimeUI : MonoBehaviour
         _trainMenu.SendToBack();
         _trainMenu.visible = !_trainMenu.visible;
         _buildMenu.visible = false;
+        click.Play();
     }
 
     private void OnHarvestButtonClicked(ClickEvent evt)
@@ -138,12 +144,14 @@ public class GameRuntimeUI : MonoBehaviour
         stone.GetComponent<CollectScript>().switchCollectable();
         soul.GetComponent<CollectScript>().switchCollectable();
         mushroom.GetComponent<CollectScript>().switchCollectable();
+        click.Play();
     }
 
     private void OnAttackButtonCLicked(ClickEvent evt)
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
+        click.Play();
     }
 
     private void OnTowerButtonClicked(ClickEvent evt)
@@ -151,6 +159,7 @@ public class GameRuntimeUI : MonoBehaviour
         _trainMenu.visible = false;
         _buildMenu.visible = false;
         _cursorManager.selected = _tower;
+        click.Play();
     }
 
     private void OnBarrackButtonClicked(ClickEvent evt)
@@ -158,6 +167,7 @@ public class GameRuntimeUI : MonoBehaviour
         _trainMenu.visible = false;
         _buildMenu.visible = false;
         _cursorManager.selected = _barrack;
+        click.Play();
     }
 
     private void OnStockButtonClicked(ClickEvent evt)
@@ -165,13 +175,15 @@ public class GameRuntimeUI : MonoBehaviour
         _trainMenu.visible = false;
         _buildMenu.visible = false;
         _cursorManager.selected = _stock;
+        click.Play();
     }
 
     private void OnPeasantButtonClicked(ClickEvent evt)
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
-        //_cursorManager.selected = _peasant as ISelectable;
+        _cursorManager.selected = _peasant;
+        click.Play();
     }
 
     private void OnSoldierButtonClicked(ClickEvent evt)
@@ -179,33 +191,24 @@ public class GameRuntimeUI : MonoBehaviour
         _trainMenu.visible = false;
         _buildMenu.visible = false;
         _cursorManager.selected = _soldier;
+        click.Play();
     }
 
-    private void OnBowmanButtonClicked(ClickEvent evt)
-    {
-        _trainMenu.visible = false;
-        _buildMenu.visible = false;
-        //_cursorManager.selected = _bowman as ISelectable;
-    }
 
     private void OnKnightButtonClicked(ClickEvent evt)
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
         _cursorManager.selected = _knight;
+        click.Play();
     }
 
-    private void OnThiefButtonClicked(ClickEvent evt)
-    {
-        _trainMenu.visible = false;
-        _buildMenu.visible = false;
-        //_cursorManager.selected = _thief as ISelectable;
-    }
 
     private void OnPriestButtonClicked(ClickEvent evt)
     {
         _trainMenu.visible = false;
         _buildMenu.visible = false;
         _cursorManager.selected = _priest;
+        click.Play();
     }
 }

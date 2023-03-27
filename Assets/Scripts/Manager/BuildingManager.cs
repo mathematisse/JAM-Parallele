@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
+    public AudioSource built;
+    public AudioSource cant;
     private BuildingScript[] _buildings;
     private CursorManager _cursorManager;
     private RessourceManager _ressourceManager;
@@ -51,6 +53,7 @@ public class BuildingManager : MonoBehaviour
                         building.GetComponent<SpriteRenderer>().color = Color.green;
                         if (Input.GetMouseButtonDown(0))
                         {
+                            built.Play();
                             building.Build();
                             _ressourceManager.Spend(building.Building);
                             building.GetComponent<SpriteRenderer>().color = Color.white;
@@ -59,6 +62,10 @@ public class BuildingManager : MonoBehaviour
                     else
                     {
                         building.GetComponent<SpriteRenderer>().color = Color.red;
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            cant.Play();
+                        }
                     }
                 }
                 else

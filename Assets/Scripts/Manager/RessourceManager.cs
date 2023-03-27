@@ -54,6 +54,14 @@ public class RessourceManager : MonoBehaviour
         RemoveSoul(building.SoulCost);
     }
 
+    public void Spend(ScriptableUnit unit)
+    {
+        RemoveWood(unit.WoodCost);
+        RemoveStone(unit.StoneCost);
+        RemoveMushroom(unit.MushroomCost);
+        RemoveSoul(unit.SoulCost);
+    }
+
     public void AddWood(int amount)
     {
         wood += amount;

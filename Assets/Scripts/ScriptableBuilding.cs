@@ -23,6 +23,7 @@ public class ScriptableBuilding : ScriptableObject, ISelectable
     public float AttackPower;
     public float AttackSpeed;
     public float AttackRange;
+    public float ShooterOffset;
     public float Hp;
 
     public int WoodStorage;
