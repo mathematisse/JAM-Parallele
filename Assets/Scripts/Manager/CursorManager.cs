@@ -22,7 +22,7 @@ public class CursorManager : MonoBehaviour
         mousePosition = tcamera.ScreenToWorldPoint(Input.mousePosition);
         if (isUpgrading)
         {
-            gameRuntime.tooltipElement.transform.position = Input.mousePosition;
+            gameRuntime.tooltipElement.transform.position = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
         }
         else
         {
