@@ -20,8 +20,8 @@ MonoBehaviour:
   BuildingType: 0
   AttackPower: 10
   AttackSpeed: 2.5
-  AttackRange: 0
-  ShooterOffset: 0
+  AttackRange: 30
+  ShooterOffset: 4
   Hp: 100
   colliderSizeX: 1.8
   WoodStorage: 0

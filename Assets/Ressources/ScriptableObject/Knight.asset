@@ -15,9 +15,9 @@ MonoBehaviour:
   Prefab: {fileID: 1000010755293042, guid: 978fa2fb617654f5eaeff9da6fc7d116, type: 3}
   WoodCost: 30
   StoneCost: 10
-  MushroomCost: 0
-  SoulCost: 5
-  AttackPower: 10
+  MushroomCost: 10
+  SoulCost: 20
+  AttackPower: 8
   AttackSpeed: 1
-  Hp: 10
-  WalkSpeed: 0.1
+  Hp: 16
+  WalkSpeed: 0.08

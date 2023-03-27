@@ -26763,7 +26763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301662754255536942, guid: 5f8748ad15e1fea4f93fc70923cd8588, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.88
       objectReference: {fileID: 0}
     - target: {fileID: 5301662754255536942, guid: 5f8748ad15e1fea4f93fc70923cd8588, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27168,6 +27168,7 @@ MonoBehaviour:
   tcamera: {fileID: 768848638}
   mousePosition: {x: 0, y: 0}
   isUpgrading: 0
+  gameRuntime: {fileID: 1861836346}
 --- !u!4 &1770768174
 Transform:
   m_ObjectHideFlags: 0
@@ -54626,7 +54627,7 @@ MonoBehaviour:
   hpBar: {fileID: 1527025348}
   AttackSpeed: 0
   Attack: 0
-  Hp: 150
+  Hp: 250
   Type: 1
   animations: 0
 --- !u!4 &1835987888655906880
@@ -55036,7 +55037,7 @@ MonoBehaviour:
   hpBar: {fileID: 2130880646}
   AttackSpeed: 0
   Attack: 0
-  Hp: 150
+  Hp: 250
   Type: 0
   animations: 0
 --- !u!4 &1939018621714431204
@@ -79467,10 +79468,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8f870bcfe937b419ed22bf340e193b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot: {fileID: 0}
   isOurs: 1
   attackPower: 3
   shootSpeed: 2
-  shootRange: 10
+  shootRange: 20
   shooterOffset: 3
   col: {fileID: 1306822470869874629}
 --- !u!114 &3293717701458353245
@@ -79485,11 +79487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8f870bcfe937b419ed22bf340e193b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot: {fileID: 0}
   isOurs: 0
   attackPower: 3
   shootSpeed: 2
-  shootRange: 30
-  shooterOffset: 3
+  shootRange: 20
+  shooterOffset: 6
   col: {fileID: 1306822471007051036}
 --- !u!1 &3294028154449223684
 GameObject:

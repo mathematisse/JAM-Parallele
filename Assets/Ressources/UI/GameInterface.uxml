@@ -25,6 +25,6 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="TooltipElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.55); position: absolute; left: auto; display: flex; visibility: hidden;">
-        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="TooltipLabel" style="width: 194px; height: 20px; font-size: 12px; -unity-text-align: middle-center;" />
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="TooltipLabel" style="width: 250px; height: 20px; font-size: 12px; -unity-text-align: middle-center;" />
     </ui:VisualElement>
 </ui:UXML>

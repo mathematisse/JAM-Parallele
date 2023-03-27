@@ -34,6 +34,8 @@ public class RessourceManager : MonoBehaviour
 
     public bool CanAfford(ScriptableBuilding building)
     {
+        if (!building)
+            return false;
         if (wood >= building.WoodCost && stone >= building.StoneCost && mushroom >= building.MushroomCost && soul >= building.SoulCost)
             return true;
         return false;

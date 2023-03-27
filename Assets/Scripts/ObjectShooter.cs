@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObjectShooter : MonoBehaviour
 {
+    public AudioSource shoot;
     public bool isOurs;
     public float attackPower = 1;
     public float shootSpeed = 1;
@@ -29,6 +30,7 @@ public class ObjectShooter : MonoBehaviour
         _shootTimer += Time.deltaTime;
         if (_shootTimer >= shootSpeed && _focused)
         {
+            shoot.Play();
             _shootTimer = 0;
             var isAlive = _focused.ReceiveDamage((int) attackPower);
             if (!isAlive)

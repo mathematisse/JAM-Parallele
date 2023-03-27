@@ -39,8 +39,15 @@ public class BuildingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Built || !_cursorManager)
+        if (!Built || !_cursorManager || !Building.nextBuilding)
+        {
+            if (_tooltipShowing)
+            {
+                _cursorManager.HideToolTip();
+                _tooltipShowing = false;
+            }
             return;
+        }
 
         if (_cursorManager.isUpgrading && IsHovered(_cursorManager.mousePosition))
         {

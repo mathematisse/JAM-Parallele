@@ -69,6 +69,8 @@ public class AttackableEntity : Entity
             if (collider.gameObject.CompareTag("AttackableEntity"))
             {
                 AttackableEntity Entity = collider.gameObject.GetComponent<AttackableEntity>();
+                if (!Entity)
+                    continue;
                 if (Entity.Hp > 0 && Entity.Type != Type) return Entity;
             }
         }
