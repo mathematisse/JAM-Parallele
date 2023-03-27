@@ -125,6 +125,7 @@ public class BuildingScript : MonoBehaviour
         Mirror.AttackSpeed = 0;
         Mirror.Type = AttackableEntity.AttackableEntityType.Enemy;
         Mirror.animations = false;
+        Mirror.GetComponent<SpriteRenderer>().color = new Color(1, 0.75f, 0.75f, 1);
         hpBarEnemy.GetComponent<HealthBar>().maxHealth = Building.Hp;
         hpBarEnemy.GetComponent<HealthBar>().currentHealth = Building.Hp;
         hpBarEnemy.GetComponent<HealthBar>().Size = new Vector2(5, 0.3f);
