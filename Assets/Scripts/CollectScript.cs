@@ -55,13 +55,13 @@ public class CollectScript : MonoBehaviour
     public void addRessources()
     {
         if (wood == 1)
-            ressources.AddWood(5);
+            ressources.AddWood(10);
         if (stone == 1)
-            ressources.AddStone(5);
+            ressources.AddStone(10);
         if (Soul == 1)
-            ressources.AddSoul(5);
+            ressources.AddSoul(10);
         if (Mushroom == 1)
-            ressources.AddMushroom(5);
+            ressources.AddMushroom(10);
         harvest.addHarvest();
     }
 }

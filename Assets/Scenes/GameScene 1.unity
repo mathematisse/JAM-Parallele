@@ -389,8 +389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a7f0bc75407204a9b52ce0560fa5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWood: 123
-  startStone: 139
+  startWood: 20
+  startStone: 20
   startMushroom: 0
   startSoul: 0
   wood: 0
@@ -5683,6 +5683,12 @@ MonoBehaviour:
       AttackSpeed: 1
       Hp: 10
       WalkSpeed: 0.1
+    until: 120
+  - army:
+    - AttackPower: 1
+      AttackSpeed: 1
+      Hp: 10
+      WalkSpeed: 0.1
     - AttackPower: 1
       AttackSpeed: 1
       Hp: 10
@@ -5709,32 +5715,8 @@ MonoBehaviour:
       AttackSpeed: 1
       Hp: 10
       WalkSpeed: 0.1
-    - AttackPower: 1
-      AttackSpeed: 1
-      Hp: 10
-      WalkSpeed: 0.1
-    - AttackPower: 1
-      AttackSpeed: 1
-      Hp: 10
-      WalkSpeed: 0.1
     until: 240
   - army:
-    - AttackPower: 1
-      AttackSpeed: 1
-      Hp: 10
-      WalkSpeed: 0.1
-    - AttackPower: 1
-      AttackSpeed: 1
-      Hp: 10
-      WalkSpeed: 0.1
-    - AttackPower: 1
-      AttackSpeed: 1
-      Hp: 10
-      WalkSpeed: 0.1
-    - AttackPower: 1
-      AttackSpeed: 1
-      Hp: 10
-      WalkSpeed: 0.1
     - AttackPower: 1
       AttackSpeed: 1
       Hp: 10
@@ -27185,6 +27167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tcamera: {fileID: 768848638}
   mousePosition: {x: 0, y: 0}
+  isUpgrading: 0
 --- !u!4 &1770768174
 Transform:
   m_ObjectHideFlags: 0
@@ -79487,7 +79470,7 @@ MonoBehaviour:
   isOurs: 1
   attackPower: 3
   shootSpeed: 2
-  shootRange: 30
+  shootRange: 10
   shooterOffset: 3
   col: {fileID: 1306822470869874629}
 --- !u!114 &3293717701458353245

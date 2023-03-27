@@ -12,9 +12,17 @@ public class PortalScript : MonoBehaviour
         collision.gameObject.GetComponent<Entity>().PassPortal();
         audioSource.Play();
         if (collision.gameObject.transform.position.y > 0) {
-            collision.gameObject.transform.position -= new Vector3(0, 3f, 0);
+            if (collision.gameObject.transform.position.x > 0) {
+                collision.gameObject.transform.position -= new Vector3(0.5f, 3f, 0);
+            } else {
+                collision.gameObject.transform.position -= new Vector3(-0.5f, 3f, 0);
+            }
         } else {
-            collision.gameObject.transform.position += new Vector3(0, 3f, 0);
+            if (collision.gameObject.transform.position.x > 0) {
+                collision.gameObject.transform.position += new Vector3(-0.5f, 3f, 0);
+            } else {
+                collision.gameObject.transform.position += new Vector3(0.5f, 3f, 0);
+            }
         }
     }
 }

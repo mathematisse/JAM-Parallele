@@ -11,17 +11,19 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8e7ae086770c5429afa153b6d7f4ce, type: 3}
   m_Name: Barrack Level 1
-  m_EditorClassIdentifier:
-  Sprite: {fileID: 21300000, guid: 0ebf525ef70636f43b86e6d51af4b4a4, type: 3}
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: 72aa63b7bd3a1674d935ffd3e4bd897b, type: 3}
   WoodCost: 10
-  StoneCost: 5
+  StoneCost: 10
   MushroomCost: 0
   SoulCost: 0
   BuildingType: 2
   AttackPower: 0
   AttackSpeed: 0
   AttackRange: 0
+  ShooterOffset: 0
   Hp: 100
+  colliderSizeX: 2.85
   WoodStorage: 0
   StoneStorage: 0
-  nextBuilding: {fileID: 0}
+  nextBuilding: {fileID: 11400000, guid: c17300cf863e05f40ba08cde22ff136e, type: 2}
