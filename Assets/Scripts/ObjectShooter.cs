@@ -30,7 +30,6 @@ public class ObjectShooter : MonoBehaviour
         if (_shootTimer >= shootSpeed && _focused)
         {
             _shootTimer = 0;
-            Debug.Log("Shot");
             var isAlive = _focused.ReceiveDamage((int) attackPower);
             if (!isAlive)
             {
@@ -43,8 +42,6 @@ public class ObjectShooter : MonoBehaviour
 
     private bool should_shoot(AttackableEntity.AttackableEntityType type)
     {
-        Debug.Log("Should shoot " + type + "?");
-        Debug.Log("Is " + (isOurs ? "ours" : "not ours"));
         if (isOurs && type == AttackableEntity.AttackableEntityType.Ally)
             return false;
         if (!isOurs && type == AttackableEntity.AttackableEntityType.Enemy)
@@ -83,7 +80,6 @@ public class ObjectShooter : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("Detects " + other.gameObject.name);
         var ent = other.GetComponent<AttackableEntity>();
         if (!_focused && ent && should_shoot(ent.Type))
         {

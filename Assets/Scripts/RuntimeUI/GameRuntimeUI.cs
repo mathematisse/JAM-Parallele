@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class GameRuntimeUI : MonoBehaviour
 {
+    public VisualElement tooltipElement;
+    public Label tooltipLabel;
     public AudioSource click;
 
     [Header("Cursor Manager")]
@@ -51,6 +53,9 @@ public class GameRuntimeUI : MonoBehaviour
     {
         var uiDocument = GetComponent<UIDocument>();
         
+        tooltipElement = uiDocument.rootVisualElement.Q("TooltipElement") as VisualElement;
+        tooltipLabel = uiDocument.rootVisualElement.Q("TooltipLabel") as Label;
+
         _buildButton = uiDocument.rootVisualElement.Q("BuildButton") as Button;
         _trainButton = uiDocument.rootVisualElement.Q("TrainButton") as Button;
         _harvestButton = uiDocument.rootVisualElement.Q("HarvestButton") as Button;

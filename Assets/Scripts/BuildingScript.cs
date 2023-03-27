@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuildingScript : MonoBehaviour
 {
+    public AudioSource upgraded;
+    public AudioSource denied;
     public GameObject objectShooter;
     public bool Built;
     public ScriptableBuilding Building;
@@ -18,36 +20,62 @@ public class BuildingScript : MonoBehaviour
     private GameObject objectShooterObject;
     private GameObject mirrorObjectShooterObject;
     private CursorManager _cursorManager;
+    private RessourceManager _ressourceManager;
     private AttackableEntity AttackEnt;
     private AttackableEntity Mirror;
     private BoxCollider2D MirrorCollider;
     private SpriteRenderer mirroredSpriteRenderer;
     private Sprite initSprite;
 
+    private bool _tooltipShowing = false;
     // Start is called before the first frame update
     void Start()
     {
         _cursorManager = FindObjectOfType<CursorManager>();
+        _ressourceManager = FindObjectOfType<RessourceManager>();
         initSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Built && _cursorManager != null && _cursorManager.isUpgrading && IsHovered(_cursorManager.mousePosition))
+        if (!Built || !_cursorManager)
+            return;
+
+        if (_cursorManager.isUpgrading && IsHovered(_cursorManager.mousePosition))
         {
+            if (!_tooltipShowing)
+            {
+                var next = Building.nextBuilding;
+                _cursorManager.SetToolTipColor(_ressourceManager.CanAfford(next));
+                _cursorManager.ShowToolTip(next.WoodCost + " Wood, " + next.StoneCost + " Stone, " + next.MushroomCost + " Flower, " + next.SoulCost + " Soul");
+                _tooltipShowing = true;
+            }
             if (Input.GetMouseButtonDown(0))
             {
-                Upgrade();
+                if (_ressourceManager.CanAfford(Building.nextBuilding))
+                {
+                    upgraded.Play();
+                    _ressourceManager.Spend(Building.nextBuilding);
+                    Upgrade();
+                }
+                else
+                {
+                    denied.Play();
+                }
             }
+        }
+        else if (_tooltipShowing)
+        {
+            _cursorManager.HideToolTip();
+            _tooltipShowing = false;
         }
     }
 
     public bool IsHovered(Vector2 point)
     {
         var contact = GetComponent<BoxCollider2D>().bounds.Contains(point);
-        var overlapPoint = Physics2D.OverlapPoint(point);
-        if (contact)// && overlapPoint.gameObject == gameObject)
+        if (contact)
         {
             return true;
         }
