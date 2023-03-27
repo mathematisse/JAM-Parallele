@@ -40,7 +40,7 @@ public class UnitManager : MonoBehaviour
 
         foreach (var building in _buildings)
         {
-            if (!building.Built || building.Building.BuildingType != BuildingType.Barrack)
+            if (!building.Built || building.Building.BuildingType != BuildingType.Barrack || !building)
                 continue;
             if (building.IsHovered(_cursorManager.mousePosition))
             {
