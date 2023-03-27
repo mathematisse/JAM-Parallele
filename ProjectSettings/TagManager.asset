@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AttackableEntity
   layers:
   - Default
   - TransparentFX
@@ -11,8 +12,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - WaterCam
+  - Fog
   - 
   - 
   - 
@@ -38,6 +39,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: CameraWater
+    uniqueID: 1659615051
+    locked: 0
+  - name: BackGroundSprite
+    uniqueID: 3795822237
+    locked: 0
+  - name: SwitchParticles
+    uniqueID: 1512469677
+    locked: 0
+  - name: Buildings
+    uniqueID: 687780683
+    locked: 0
+  - name: Props
+    uniqueID: 189555513
+    locked: 0
+  - name: Particles
+    uniqueID: 1917106911
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WaterSurface
+    uniqueID: 4175489645
+    locked: 0
+  - name: HeatlhBars
+    uniqueID: 862076215
     locked: 0

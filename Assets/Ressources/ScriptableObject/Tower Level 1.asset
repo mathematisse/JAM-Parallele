@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8e7ae086770c5429afa153b6d7f4ce, type: 3}
+  m_Name: Tower Level 1
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: d26a89fed921cfd4d934349f2e5527f3, type: 3}
+  WoodCost: 10
+  StoneCost: 10
+  MushroomCost: 0
+  SoulCost: 0
+  BuildingType: 0
+  AttackPower: 2
+  AttackSpeed: 1
+  AttackRange: 15
+  ShooterOffset: 4
+  Hp: 50
+  colliderSizeX: 1.8
+  WoodStorage: 0
+  StoneStorage: 0
+  nextBuilding: {fileID: 11400000, guid: 6031bf558bac01149b655db258b4774a, type: 2}

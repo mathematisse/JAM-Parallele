@@ -1,0 +1,29 @@
+
+VisualElement > VisualElement > VisualElement {
+    border-radius: 10px;
+}
+
+VisualElement > VisualElement > VisualElement > VisualElement {
+    border-color: rgb(139, 135, 57);
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+.unity-button {
+    border-color: rgb(50, 50, 50);
+    border-width: 2px;
+    border-radius: 10px;
+    background-color: rgb(139, 135, 57);
+}
+
+.unit-label {
+    text-shadow: 0px 0px 2px rgb(0, 0, 0);
+    color: rgb(200, 200, 200);
+    -unity-font-style: bold;
+}
+
+.unity-text-element {
+    text-shadow: 0px 0px 2px rgb(0, 0, 0);
+    color: rgb(200, 200, 200);
+    -unity-font-style: bold;
+}

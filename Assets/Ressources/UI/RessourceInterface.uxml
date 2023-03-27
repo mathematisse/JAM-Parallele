@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="MainElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column; align-items: flex-start;">
+        <ui:VisualElement name="RessourcesElement" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: auto; height: auto;">
+            <ui:VisualElement name="WoodElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.67); flex-direction: row;">
+                <ui:VisualElement name="WoodIcon" focusable="false" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: 40px; height: 40px; align-items: center; align-self: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/Ressources/logos/logo_wood_png.png?fileID=21300000&amp;guid=a848e6ab64d08314cb539b87f2019a0f&amp;type=3#logo_wood_png&apos;);" />
+                <ui:Label tabindex="-1" text="999" display-tooltip-when-elided="true" name="WoodLabel" style="height: 40px; width: 100px; -unity-text-align: middle-center; font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="StoneElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.67); flex-direction: row;">
+                <ui:VisualElement name="StoneIcon" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: 40px; height: 40px; align-items: center; align-self: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/Ressources/logos/lgo_stone_png.png?fileID=21300000&amp;guid=79172553b60065d439b09b1fb3bb8276&amp;type=3#lgo_stone_png&apos;);" />
+                <ui:Label tabindex="-1" text="999" display-tooltip-when-elided="true" name="StoneLabel" style="height: 40px; width: 100px; -unity-text-align: middle-center; font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MushroomElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.67); flex-direction: row;">
+                <ui:VisualElement name="MushroomIcon" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: 40px; height: 40px; align-items: center; align-self: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/Ressources/logos/lgo_sunflower_png.png?fileID=21300000&amp;guid=c66c8e7ce875c774c926f09850a1186b&amp;type=3#lgo_sunflower_png&apos;);" />
+                <ui:Label tabindex="-1" text="999" display-tooltip-when-elided="true" name="MushroomLabel" style="height: 40px; width: 100px; -unity-text-align: middle-center; font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="SoulElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.67); flex-direction: row; background-image: none;">
+                <ui:VisualElement name="SoulElement" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: 40px; height: 40px; align-items: center; align-self: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/Ressources/logos/lgo_soul_png.png?fileID=21300000&amp;guid=faacf5aef9e81e049bfcef78faeb07f7&amp;type=3#lgo_soul_png&apos;);" />
+                <ui:Label tabindex="-1" text="999" display-tooltip-when-elided="true" name="SoulLabel" style="height: 40px; width: 100px; -unity-text-align: middle-center; font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MerchantElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.67); flex-direction: row; background-image: none;">
+                <ui:VisualElement name="MerchantElement" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); width: 40px; height: 40px; align-items: center; align-self: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/Ressources/Sprites/MerchantIcon.png?fileID=21300000&amp;guid=ebbf8ea8c554e8646be8a0d85a25cd24&amp;type=3#MerchantIcon&apos;);" />
+                <ui:Label tabindex="-1" text="999" display-tooltip-when-elided="true" name="MerchantLabel" style="height: 40px; width: 100px; -unity-text-align: middle-center; font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
