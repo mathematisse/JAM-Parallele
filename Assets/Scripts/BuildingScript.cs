@@ -15,15 +15,20 @@ public class BuildingScript : MonoBehaviour
     public float yOffset;
     private float StartyOffset = 4f;
 
+    private GameObject objectShooterObject;
+    private GameObject mirrorObjectShooterObject;
     private CursorManager _cursorManager;
     private AttackableEntity AttackEnt;
     private AttackableEntity Mirror;
     private BoxCollider2D MirrorCollider;
+    private SpriteRenderer mirroredSpriteRenderer;
+    private Sprite initSprite;
 
     // Start is called before the first frame update
     void Start()
     {
         _cursorManager = FindObjectOfType<CursorManager>();
+        initSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame
@@ -60,7 +65,7 @@ public class BuildingScript : MonoBehaviour
         GetComponent<BoxCollider2D>().offset += new Vector2(0, -StartyOffset);
         mirroredObject = new GameObject(this.GetType().Name + " mirrored");
         mirroredObject.transform.position = new Vector3(transform.position.x, transform.position.y - yOffset, -0.3f);
-        SpriteRenderer mirroredSpriteRenderer = mirroredObject.AddComponent<SpriteRenderer>();
+        mirroredSpriteRenderer = mirroredObject.AddComponent<SpriteRenderer>();
         mirroredSpriteRenderer.sprite = Building.Sprite;
         mirroredSpriteRenderer.flipY = true;
         mirroredSpriteRenderer.sortingLayerName = "Buildings";
@@ -93,10 +98,10 @@ public class BuildingScript : MonoBehaviour
         MirrorCollider.size = new Vector2(Building.colliderSizeX, MirrorCollider.size.y);
         if (Building.BuildingType == BuildingType.Tower)
         {
-            var objectShooter = Instantiate(this.objectShooter, transform.position, Quaternion.identity, transform);
-            objectShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset, true);
-            var mirroredShooter = Instantiate(this.objectShooter, mirroredObject.transform.position, Quaternion.identity, mirroredObject.transform);
-            mirroredShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, - Building.ShooterOffset, false);
+            var objectShooterObject = Instantiate(this.objectShooter, transform.position, Quaternion.identity, transform);
+            objectShooterObject.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset, true);
+            var mirrorObjectShooterObject = Instantiate(this.objectShooter, mirroredObject.transform.position, Quaternion.identity, mirroredObject.transform);
+            mirrorObjectShooterObject.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, - Building.ShooterOffset, false);
             AttackEnt.AttackSpeed = Building.AttackSpeed;
             Mirror.AttackSpeed = Building.AttackSpeed;
         }
@@ -121,10 +126,10 @@ public class BuildingScript : MonoBehaviour
         hpBarEnemy.GetComponent<HealthBar>().currentHealth = Building.Hp;
         if (Building.BuildingType == BuildingType.Tower)
         {
-            var objectShooter = GetComponentInChildren<ObjectShooter>();
-            objectShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset, true);
-            var mirroredShooter = mirroredObject.transform.GetChild(0).gameObject;
-            mirroredShooter.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, - Building.ShooterOffset, false);
+            var objectShooterObject = GetComponentInChildren<ObjectShooter>();
+            objectShooterObject.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, Building.ShooterOffset, true);
+            var mirrorObjectShooterObject = mirroredObject.transform.GetChild(0).gameObject;
+            mirrorObjectShooterObject.GetComponent<ObjectShooter>().SetUp(Building.AttackPower, Building.AttackSpeed, Building.AttackRange, - Building.ShooterOffset, false);
             AttackEnt.AttackSpeed = Building.AttackSpeed;
             Mirror.AttackSpeed = Building.AttackSpeed;
         }

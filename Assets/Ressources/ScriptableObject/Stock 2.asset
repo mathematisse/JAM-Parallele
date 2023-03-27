@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Stock 2
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 957cc2e3123479445a8d426ca5abbea7, type: 3}
-  WoodCost: 0
-  StoneCost: 0
+  WoodCost: 30
+  StoneCost: 25
   MushroomCost: 0
-  SoulCost: 0
+  SoulCost: 10
   BuildingType: 1
   AttackPower: 0
   AttackSpeed: 0
   AttackRange: 0
+  ShooterOffset: 0
   Hp: 100
+  colliderSizeX: 2.85
   WoodStorage: 100
   StoneStorage: 100
   nextBuilding: {fileID: 11400000, guid: d94a8c46687c9d94c998f39064730f2a, type: 2}
