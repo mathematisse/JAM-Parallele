@@ -12,10 +12,25 @@ public class CollectScript : MonoBehaviour
     public float stone = 0;
     public float Soul = 0;
     public float Mushroom = 0;
-    
-    void OnMouseDown()
+
+    private CursorManager _cursor;
+
+    public bool IsHovered(Vector2 point)
     {
-        if (collectable == 1)
+        var contact = GetComponent<BoxCollider2D>().bounds.Contains(point);
+        return contact;
+    }
+
+    void Start()
+    {
+        _cursor = FindObjectOfType<CursorManager>();
+    }
+
+    void Update()
+    {
+        if (!IsHovered(_cursor.mousePosition) || !Input.GetMouseButtonDown(0))
+            return;
+        if (collectable == 1 && Input.GetMouseButton(0))
         {
             if (wood == 1 || stone == 1) {
                 harvest.spawn(gameObject, false);
@@ -23,7 +38,7 @@ public class CollectScript : MonoBehaviour
             if (Soul == 1 || Mushroom == 1) {
                 harvest.spawn(gameObject, true);
             }
-            gameRuntime.resetHarvest();
+            //gameRuntime.resetHarvest();
         }
     }
 

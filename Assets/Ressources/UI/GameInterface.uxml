@@ -1,13 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="MainElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column; align-items: flex-start;">
-        <ui:VisualElement name="GameToolsElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; align-items: stretch;">
+    <ui:VisualElement name="MainElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; align-items: flex-start;">
+        <ui:VisualElement name="GameToolsElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; align-items: stretch; border-left-color: rgba(139, 135, 57, 0); border-right-color: rgba(139, 135, 57, 0); border-top-color: rgba(139, 135, 57, 0); border-bottom-color: rgba(139, 135, 57, 0);">
             <ui:VisualElement name="ToolsElement" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.67); flex-direction: row;">
                 <ui:Button text="Build" display-tooltip-when-elided="true" name="BuildButton" focusable="false" style="width: 100px;" />
                 <ui:Button text="Train" display-tooltip-when-elided="true" name="TrainButton" focusable="false" style="width: 100px;" />
                 <ui:Button text="Harvest" display-tooltip-when-elided="true" name="HarvestButton" focusable="false" style="width: 100px;" />
-                <ui:Button text="Attack" display-tooltip-when-elided="true" name="AttackButton" focusable="false" style="width: 100px;" />
+                <ui:Button text="Upgrade" display-tooltip-when-elided="true" name="UpgradeButton" focusable="false" style="width: 100px;" />
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); border-left-color: rgba(139, 135, 57, 0); border-right-color: rgba(139, 135, 57, 0); border-top-color: rgba(139, 135, 57, 0); border-bottom-color: rgba(139, 135, 57, 0); width: 70px;" />
+                <ui:Button text="None" display-tooltip-when-elided="true" name="FakeButton" focusable="false" style="width: 100px; visibility: visible; background-color: rgb(84, 83, 70);" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; border-left-color: rgba(139, 135, 57, 0); border-right-color: rgba(139, 135, 57, 0); border-top-color: rgba(139, 135, 57, 0); border-bottom-color: rgba(139, 135, 57, 0);">
                 <ui:VisualElement name="BuildMenu" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0.63); display: flex; visibility: hidden; height: 225px; flex-direction: row; align-items: flex-start; justify-content: flex-start; overflow: visible; flex-wrap: wrap; width: initial; max-width: 433px; position: relative;">
                     <ui:Button text="Tower" display-tooltip-when-elided="true" name="TowerButton" focusable="false" style="width: 100px; height: 100px; font-size: 12px;" />
                     <ui:Button text="Barrack" display-tooltip-when-elided="true" name="BarrackButton" focusable="false" style="width: 100px; height: 100px; font-size: 12px;" />
