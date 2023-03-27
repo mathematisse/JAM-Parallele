@@ -84,7 +84,7 @@ public class BuildingScript : MonoBehaviour
         hpBarEnemy.GetComponent<HealthBar>().Size = new Vector2(5, 0.3f);
         Mirror.hpBar = hpBarEnemy.GetComponent<HealthBar>();
         MirrorCollider = mirroredObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
-        MirrorCollider.size = new Vector2(3, MirrorCollider.size.y);
+        MirrorCollider.size = new Vector2(Building.colliderSizeX, MirrorCollider.size.y);
         if (Building.BuildingType == BuildingType.Tower)
         {
             var objectShooter = Instantiate(this.objectShooter, transform.position, Quaternion.identity, transform);
