@@ -102,6 +102,7 @@ MonoBehaviour:
   Built: 0
   Building: {fileID: 11400000, guid: fd26e7aa4d11c124594c465646a027f1, type: 2}
   mirroredObject: {fileID: 0}
+  hpBar: {fileID: 8677045997115392690, guid: 5f8748ad15e1fea4f93fc70923cd8588, type: 3}
   yOffset: 5
 --- !u!61 &8024220143070536144
 BoxCollider2D:
