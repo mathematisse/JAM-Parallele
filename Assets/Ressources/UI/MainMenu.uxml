@@ -4,8 +4,11 @@
             <ui:Label tabindex="-1" text="PARALLEL&#10;EMPIRES" display-tooltip-when-elided="true" style="font-size: 34px; -unity-text-align: middle-center;" />
             <ui:Label tabindex="-1" text="New Incredible Simulator" display-tooltip-when-elided="true" style="-unity-text-align: middle-center;" />
             <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" />
-            <ui:Button text="Options" display-tooltip-when-elided="true" name="OptionsButton" />
+            <ui:Button text="How to play" display-tooltip-when-elided="true" name="OptionsButton" />
             <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" />
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="HowToPlay" style="flex-grow: 1; background-color: rgba(58, 80, 56, 0.93); position: absolute; align-items: center; align-self: center; top: 120px; -unity-text-outline-color: rgba(139, 135, 57, 0); border-left-color: rgb(139, 135, 57); border-right-color: rgb(139, 135, 57); border-top-color: rgb(139, 135, 57); border-bottom-color: rgb(139, 135, 57); height: 190px; width: 339px; border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; justify-content: center; visibility: hidden;">
+        <ui:Label tabindex="-1" text="- Use the arrow keys to move around.&#10;- Press space to switch world&#10;- Select harvest and click on ressources&#10;- Build a barrack to train units there&#10;- Be prepared for attacks&#10;- Buildings are built in both worlds&#10;- Destruction occurs in one only.&#10;- Press escape to show menu" display-tooltip-when-elided="true" name="Label" style="-unity-paragraph-spacing: 30px;" />
     </ui:VisualElement>
 </ui:UXML>

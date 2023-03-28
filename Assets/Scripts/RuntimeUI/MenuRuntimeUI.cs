@@ -7,6 +7,7 @@ public class MenuRuntimeUI : MonoBehaviour
     private Button _startbutton;
     private Button _optionsbutton;
     private Button _quitbutton;
+    private VisualElement _howToPlay;
     
     private void OnEnable()
     {
@@ -15,6 +16,7 @@ public class MenuRuntimeUI : MonoBehaviour
         _startbutton = uiDocument.rootVisualElement.Q("StartButton") as Button;
         _optionsbutton = uiDocument.rootVisualElement.Q("OptionsButton") as Button;
         _quitbutton = uiDocument.rootVisualElement.Q("QuitButton") as Button;
+        _howToPlay = uiDocument.rootVisualElement.Q("HowToPlay") as VisualElement;
 
         _startbutton.RegisterCallback<ClickEvent>(LoadGameScene);
         _optionsbutton.RegisterCallback<ClickEvent>(OpenOptions);
@@ -35,7 +37,9 @@ public class MenuRuntimeUI : MonoBehaviour
 
     private void OpenOptions(ClickEvent evt)
     {
-        Debug.Log("Open Options");
+        _howToPlay.visible = !_howToPlay.visible;
+        _optionsbutton.text = _howToPlay.visible ? "Close" : "How to play";
+        _quitbutton.SetEnabled(!_howToPlay.visible);
     }
 
     private void QuitGame(ClickEvent evt)

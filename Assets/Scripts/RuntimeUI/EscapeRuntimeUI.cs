@@ -43,7 +43,10 @@ public class EscapeRuntimeUI : MonoBehaviour
 
     private void OpenOptions(ClickEvent evt)
     {
-        Debug.Log("Open Options");
+        FindAnyObjectByType<RessourceManager>().AddWood(1000);
+        FindAnyObjectByType<RessourceManager>().AddStone(1000);
+        FindAnyObjectByType<RessourceManager>().AddMushroom(1000);
+        FindAnyObjectByType<RessourceManager>().AddSoul(1000);
     }
 
     private void QuitGame(ClickEvent evt)
