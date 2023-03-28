@@ -40,6 +40,7 @@ public class MenuRuntimeUI : MonoBehaviour
         _howToPlay.visible = !_howToPlay.visible;
         _optionsbutton.text = _howToPlay.visible ? "Close" : "How to play";
         _quitbutton.SetEnabled(!_howToPlay.visible);
+        _startbutton.SetEnabled(!_howToPlay.visible);
     }
 
     private void QuitGame(ClickEvent evt)
