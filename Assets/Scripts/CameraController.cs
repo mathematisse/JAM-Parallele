@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     public AnimationCurve movementCurveY;
     public GameObject Water;
     public float rotationSpeed = 1f;
-    public float moveSpeed = 50f;
+    public float moveSpeed = 0.0001f;
 
     public float minx = -72;
     public float maxx = 63;
@@ -41,6 +41,12 @@ public class CameraController : MonoBehaviour
     {
         var horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            Touch touch = Input.touches[0];
+            horizontalInput = touch.deltaPosition.x / -100;
+        }
+
         if (horizontalInput != 0f && !isRotating) {
             var move = Vector3.right * horizontalInput * moveSpeed * Time.deltaTime * inversion;
             var wtransform = Water.GetComponentInChildren<Renderer>().gameObject.transform;
@@ -52,7 +58,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isRotating) {
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 1) && !isRotating) {
             originalEulerAngles = transform.eulerAngles;
             originalEulerAnglesWater = Water.transform.eulerAngles;
             originalPosition = transform.position;

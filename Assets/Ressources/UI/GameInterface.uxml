@@ -27,4 +27,5 @@
     <ui:VisualElement name="TooltipElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.55); position: absolute; left: auto; display: flex; visibility: hidden;">
         <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="TooltipLabel" style="width: 250px; height: 20px; font-size: 12px; -unity-text-align: middle-center;" />
     </ui:VisualElement>
+    <ui:Button text="X" display-tooltip-when-elided="true" name="MenuButton" focusable="false" style="width: 50px; position: absolute; left: auto; right: 0; bottom: 0; font-size: 33px; text-overflow: clip; color: rgb(202, 75, 75);" />
 </ui:UXML>

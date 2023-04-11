@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class GameRuntimeUI : MonoBehaviour
 {
+    public GameObject escapeMenu;
     public VisualElement tooltipElement;
     public Label tooltipLabel;
     public AudioSource click;
@@ -48,6 +49,8 @@ public class GameRuntimeUI : MonoBehaviour
 
     private Button _fakeButton;
 
+    private Button _menuButton;
+
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -75,6 +78,8 @@ public class GameRuntimeUI : MonoBehaviour
         _fakeButton = uiDocument.rootVisualElement.Q("FakeButton") as Button;
         _fakeButton.SetEnabled(false);
 
+        _menuButton = uiDocument.rootVisualElement.Q("MenuButton") as Button;
+
         _towerButton.text = "Tower\n\n" + _tower.WoodCost + " Wood\n" + _tower.StoneCost + " Stone\n" + _tower.MushroomCost + " Flower\n" + _tower.SoulCost + " Soul";
         _barrackButton.text = "Barrack\n\n" + _barrack.WoodCost + " Wood\n" + _barrack.StoneCost + " Stone\n" + _barrack.MushroomCost + " Flower\n" + _barrack.SoulCost + " Soul";
         _stockButton.text = "Stock\n\n" + _stock.WoodCost + " Wood\n" + _stock.StoneCost + " Stone\n" + _stock.MushroomCost + " Flower\n" + _stock.SoulCost + " Soul";
@@ -97,6 +102,8 @@ public class GameRuntimeUI : MonoBehaviour
         _soldierButton.RegisterCallback<ClickEvent>(OnSoldierButtonClicked);
         _knightButton.RegisterCallback<ClickEvent>(OnKnightButtonClicked);
         _priestButton.RegisterCallback<ClickEvent>(OnPriestButtonClicked);
+
+        _menuButton.RegisterCallback<ClickEvent>(OnMenuButtonClicked);
     }
 
     private void OnDisable()
@@ -249,5 +256,17 @@ public class GameRuntimeUI : MonoBehaviour
         _cursorManager.selected = _priest;
         click.Play();
         _fakeButton.text = "Priest";
+    }
+
+    private void OnMenuButtonClicked(ClickEvent evt)
+    {
+        _trainMenu.visible = false;
+        _buildMenu.visible = false;
+        resetHarvest();
+        click.Play();
+        _fakeButton.text = "None";
+        _cursorManager.selected = null;
+        _cursorManager.isUpgrading = false;
+        escapeMenu.SetActive(!escapeMenu.activeSelf);
     }
 }
