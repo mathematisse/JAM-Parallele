@@ -43,9 +43,9 @@ ___
 
 In this game, your goal is to destroy the castle in the "upside-down" world.
 
-Both worlds communicate by portal, situated ate the extremities of the map.
+Both worlds communicate by portals, situated at the extremities of the map.
 
-You'll have to defend youself from recurrent attacks of your reflections.
+You'll have to defend yourself from recurrent attacks of your reflection.
 
 Click on buttons to explore what's possible !
 - Building
